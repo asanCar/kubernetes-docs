@@ -1,0 +1,1529 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.4.0">
+    
+    
+      
+        <title>Persistent Volume & Claim - Apuntes CKA-CKAD</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.fe0cca5b.min.css">
+      
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#persistent-volume-claim" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="../.." title="Apuntes CKA-CKAD" class="md-header-nav__button md-logo" aria-label="Apuntes CKA-CKAD">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Apuntes CKA-CKAD
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Persistent Volume & Claim
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Apuntes CKA-CKAD" class="md-nav__button md-logo" aria-label="Apuntes CKA-CKAD">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Apuntes CKA-CKAD
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Componentes Kubernetes
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Componentes Kubernetes" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Componentes Kubernetes
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../components/components/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../components/control-components/" title="Componentes del Control Plane" class="md-nav__link">
+      Componentes del Control Plane
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../components/node-components/" title="Componentes de los Nodos" class="md-nav__link">
+      Componentes de los Nodos
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Objetos Kubernetes
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Objetos Kubernetes" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Objetos Kubernetes
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../objects/objects/" title="Gestión de objetos Kubernetes" class="md-nav__link">
+      Gestión de objetos Kubernetes
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../objects/containers/" title="Containers" class="md-nav__link">
+      Containers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-3" type="checkbox" id="nav-3-3">
+    
+    <label class="md-nav__link" for="nav-3-3">
+      Workloads
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Workloads" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Workloads
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../objects/pods/" title="Pods" class="md-nav__link">
+      Pods
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../objects/controllers/" title="Controllers" class="md-nav__link">
+      Controllers
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Networking
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Networking" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Networking
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../network/service/" title="Service" class="md-nav__link">
+      Service
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../network/endpoint/" title="EndpointSlices" class="md-nav__link">
+      EndpointSlices
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../network/dns/" title="DNS" class="md-nav__link">
+      DNS
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../network/kube-proxy/" title="kube-proxy" class="md-nav__link">
+      kube-proxy
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../network/ingress/" title="Ingress" class="md-nav__link">
+      Ingress
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../network/policies/" title="Network Policies" class="md-nav__link">
+      Network Policies
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" checked>
+    
+    <label class="md-nav__link" for="nav-5">
+      Storage
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Storage" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Storage
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../volumes/" title="Volumes" class="md-nav__link">
+      Volumes
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Persistent Volume & Claim
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
+        </span>
+      </label>
+    
+    <a href="./" title="Persistent Volume & Claim" class="md-nav__link md-nav__link--active">
+      Persistent Volume & Claim
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ciclo-de-vida-de-un-pv-y-su-pvc" class="md-nav__link">
+    Ciclo de vida de un PV y su PVC
+  </a>
+  
+    <nav class="md-nav" aria-label="Ciclo de vida de un PV y su PVC">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aprovisionamiento" class="md-nav__link">
+    Aprovisionamiento
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#binding" class="md-nav__link">
+    Binding
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uso" class="md-nav__link">
+    Uso
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proteccion-storage-object-in-use" class="md-nav__link">
+    Protección "Storage Object in Use"
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reclaiming" class="md-nav__link">
+    Reclaiming
+  </a>
+  
+    <nav class="md-nav" aria-label="Reclaiming">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#retain" class="md-nav__link">
+    Retain
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recycle-deprecated" class="md-nav__link">
+    Recycle (Deprecated)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete" class="md-nav__link">
+    Delete
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expandir-almacenamiento" class="md-nav__link">
+    Expandir almacenamiento
+  </a>
+  
+    <nav class="md-nav" aria-label="Expandir almacenamiento">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#redimensionar-persistent-volume-con-sistema-de-ficheros" class="md-nav__link">
+    Redimensionar Persistent Volume con sistema de ficheros
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#redimensionar-persistent-volume-claim-en-uso" class="md-nav__link">
+    Redimensionar Persistent Volume Claim en uso
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#persistentvolume" class="md-nav__link">
+    PersistentVolume
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#persistentvolumeclaim" class="md-nav__link">
+    PersistentVolumeClaim
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../storage-classes/" title="Storage Classes" class="md-nav__link">
+      Storage Classes
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Configuración
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Configuración" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Configuración
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../configuration/best-practices/" title="Best Practices" class="md-nav__link">
+      Best Practices
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../configuration/configmap/" title="ConfigMap" class="md-nav__link">
+      ConfigMap
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../configuration/secret/" title="Secret" class="md-nav__link">
+      Secret
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../configuration/resources/" title="Gestionar recursos de los Containers" class="md-nav__link">
+      Gestionar recursos de los Containers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../configuration/pod-overhead/" title="Pod Overhead" class="md-nav__link">
+      Pod Overhead
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../configuration/priority/" title="Prioridad de los Pods y Apropiación" class="md-nav__link">
+      Prioridad de los Pods y Apropiación
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../configuration/kubeconfig/" title="Configurar context del cluster" class="md-nav__link">
+      Configurar context del cluster
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      Policies
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Policies" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Policies
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../policies/limit-ranges/" title="Limit Ranges" class="md-nav__link">
+      Limit Ranges
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../policies/resource-quota/" title="Resource Quotas" class="md-nav__link">
+      Resource Quotas
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../policies/security-policies/" title="Pod Security Policies" class="md-nav__link">
+      Pod Security Policies
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      Security
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Security" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Security
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../security/cloud-security/" title="Cloud Native Security" class="md-nav__link">
+      Cloud Native Security
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../security/service-account/" title="ServiceAccount" class="md-nav__link">
+      ServiceAccount
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../security/rbac/" title="RBAC" class="md-nav__link">
+      RBAC
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../security/security-context/" title="Security Context" class="md-nav__link">
+      Security Context
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
+    
+    <label class="md-nav__link" for="nav-9">
+      Scheduling & Eviction
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Scheduling & Eviction" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Scheduling & Eviction
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../scheduling/scheduler/" title="Kubernetes Scheduler" class="md-nav__link">
+      Kubernetes Scheduler
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../scheduling/taints-tolerations/" title="Taints & Tolerations" class="md-nav__link">
+      Taints & Tolerations
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../scheduling/assign-pods/" title="Asignar Pods a nodos" class="md-nav__link">
+      Asignar Pods a nodos
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../CKA" title="Cluster Administration" class="md-nav__link">
+      Cluster Administration
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-11" type="checkbox" id="nav-11">
+    
+    <label class="md-nav__link" for="nav-11">
+      Monitorización y Debugging
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Monitorización y Debugging" data-md-level="1">
+      <label class="md-nav__title" for="nav-11">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Monitorización y Debugging
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../monitoring/debugging/" title="Debugging" class="md-nav__link">
+      Debugging
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-12" type="checkbox" id="nav-12">
+    
+    <label class="md-nav__link" for="nav-12">
+      Comandos kubectl
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Comandos kubectl" data-md-level="1">
+      <label class="md-nav__title" for="nav-12">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Comandos kubectl
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../kubectl/imperative/" title="Creación imperativa de recursos" class="md-nav__link">
+      Creación imperativa de recursos
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../kubectl/edit-patch/" title="Editar/Actualizar recursos" class="md-nav__link">
+      Editar/Actualizar recursos
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../other/json-path/" title="JSON Path" class="md-nav__link">
+      JSON Path
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ciclo-de-vida-de-un-pv-y-su-pvc" class="md-nav__link">
+    Ciclo de vida de un PV y su PVC
+  </a>
+  
+    <nav class="md-nav" aria-label="Ciclo de vida de un PV y su PVC">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aprovisionamiento" class="md-nav__link">
+    Aprovisionamiento
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#binding" class="md-nav__link">
+    Binding
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uso" class="md-nav__link">
+    Uso
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proteccion-storage-object-in-use" class="md-nav__link">
+    Protección "Storage Object in Use"
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reclaiming" class="md-nav__link">
+    Reclaiming
+  </a>
+  
+    <nav class="md-nav" aria-label="Reclaiming">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#retain" class="md-nav__link">
+    Retain
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recycle-deprecated" class="md-nav__link">
+    Recycle (Deprecated)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete" class="md-nav__link">
+    Delete
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expandir-almacenamiento" class="md-nav__link">
+    Expandir almacenamiento
+  </a>
+  
+    <nav class="md-nav" aria-label="Expandir almacenamiento">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#redimensionar-persistent-volume-con-sistema-de-ficheros" class="md-nav__link">
+    Redimensionar Persistent Volume con sistema de ficheros
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#redimensionar-persistent-volume-claim-en-uso" class="md-nav__link">
+    Redimensionar Persistent Volume Claim en uso
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#persistentvolume" class="md-nav__link">
+    PersistentVolume
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#persistentvolumeclaim" class="md-nav__link">
+    PersistentVolumeClaim
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  
+                
+                
+                <h1 id="persistent-volume-claim">Persistent Volume &amp; Claim</h1>
+<p>La API de Kubernetes dispone de dos recursos que permiten abstraer y separar el
+aprovisionamiento de almacenamiento, respecto a la forma en que se consume.</p>
+<p>Por una parte, están los <strong>PersistentVolume</strong> (PV), que representan secciones de
+almacenamiento dentro del cluster. Estas secciones de almacenamientos puedes ser
+aprovisionadas por un administrador o de forma dinámica mediante un
+<strong>StorageClass</strong>.</p>
+<p>Los <strong>PersistentVolume</strong> a diferencia de los <em>Volume</em>, tienen un ciclo de vida
+propio, por lo que su tiempo de vida no depende del Pod que lo utiliza.</p>
+<p>Por otro lado, están los <strong>PersistentVolumeClaim</strong> (PVC), que son las peticiones de
+almacenamiento que realizan los usuarios. Permiten solicitar la cantidad de
+almacenamiento requerida, así como el modo de acceso al almacenamiento
+(<em>ReadWriteOnce</em>, <em>ReadOnlyMany</em> o <em>ReadWriteMany</em>).</p>
+<p>De esta forma los <strong>PersistentVolumeClaim</strong> se vinculan con un
+<strong>PersistentVolume</strong> que cumpla sus requisitos. </p>
+<p>Los administradores del cluster suelen aprovisionar distintas tipologías de
+<strong>PersistentVolume</strong> (o <strong>StorageClass</strong>) para cubrir diferentes necesidades que
+puedan tener los usuarios (tamaño, rendimiento...).</p>
+<h2 id="ciclo-de-vida-de-un-pv-y-su-pvc">Ciclo de vida de un PV y su PVC</h2>
+<h3 id="aprovisionamiento">Aprovisionamiento</h3>
+<p>El aprovisionamiento de los PV puede llevarlo a cabo de forma <strong>estática</strong>
+el administrador del cluster o de forma <strong>dinámica</strong> si el PVC tiene configurada
+una <strong>StorageClass</strong>. Si el PVC no encuentra un PV creado anteriormente, que
+cumpla sus necesidades, solicitará a la <strong>StorageClass</strong> que genere uno nuevo.</p>
+<p>El <strong>StorageClass</strong> debe haber sido previamente configurado por el administrador
+para que por ejemplo pida los nuevos recursos a un proveedor Cloud.</p>
+<h3 id="binding">Binding</h3>
+<p>Cuando un usuario crea un <strong>PersistentVolumeClaim</strong> (o se genera de forma
+dinámica por el Pod), el cluster busca un PV ya creado que cumpla los requisitos de
+almacenamiento y modo de acceso solicitados. Si lo encuentra los vincula.</p>
+<p>De lo contrario, se aprovisiona un PV de forma dinámica para que cubra las
+necesidades del PVC y se vinculan.</p>
+<p>La vinculación entre PV y PVC es exclusivamente 1-to-1, mediante una propiedad
+<code>claimRef</code>, que los vincula de forma bidireccional.</p>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>Un <strong>PersistentVolumeClaim</strong> puede utilizar cualquier <strong>PersistentVolume</strong>
+que cumpla sus demandas. Incluso si ofrece más almacenamiento que el
+requerido. En ese caso, el <strong>PersistentVolume</strong> se infrautilizará, ya que el
+Pod únicamente utilizará el almacenamiento solicitado.</p>
+</div>
+<h3 id="uso">Uso</h3>
+<p>Los Pods utilizan los Claims como Volume. El cluster se encarga de inspeccionar
+el Claim, buscar el PV asociado a él y montarlo en el Pod con el modo de acceso
+configurado.</p>
+<h3 id="proteccion-storage-object-in-use">Protección "Storage Object in Use"</h3>
+<p>Esta protección sirve para evitar la pérdida de datos. Esta característica
+impide que se elimine un PVC que esté siendo utilizado por un Pod. Se puede
+su eliminación a la API, pero hasta que el Pod no deje de utilizar el PVC, no se
+cursará la petición.</p>
+<p>De la misma forma sucede con los PV que estén vinculados a un PVC. Hasta que no
+se desvincule del PVC, la petición de eliminación del PV no se cursará.</p>
+<h3 id="reclaiming">Reclaiming</h3>
+<p>Cuando un usuario ya no necesita un PVC, deberá eliminarlo manualmente.
+Entonces, la <em>reclaim policy</em> del PV que hubiera vinculado con ese PVC, indicará
+al clúster qué hacer con el <strong>PersistentVolume</strong>.</p>
+<p>Existen 3 tipos de <em>reclaim policy</em>: Retain, Recycle o Delete.</p>
+<h4 id="retain">Retain</h4>
+<p>Con esta policy, el PV no se eliminará para que sea realice de forma manual
+por el administrador. </p>
+<p>Pese a que se libere el recurso, el PV seguirá teniendo definido el ClaimRef del
+PVC con el que estaba vinculado y el contenido que haya sido almacenado por el
+usuario.</p>
+<p>Si se utiliza un Volume plugin que aprovisione recursos externos (p.ej. en un
+Cloud provider), una vez se elimine el PV, los recursos generados no serán
+eliminados. Deberán eliminarse manualmente desde fuera del cluster.</p>
+<h4 id="recycle-deprecated">Recycle (Deprecated)</h4>
+<p>Con esta policy, se elimina todo el contenido del PV, para que sea reutilizado
+por otro PVC.</p>
+<h4 id="delete">Delete</h4>
+<p>Con esta policy, una vez se elimina el <strong>PersistentVolumeClaim</strong> también se
+elimina el <strong>PersistentVolume</strong>, así como todo recurso externo que haya podido
+generar el Volume plugin.</p>
+<h3 id="expandir-almacenamiento">Expandir almacenamiento</h3>
+<p>Existen ciertos Volume plugin que permiten expandir el almacenamiento solicitado
+por el PVC. De esta forma, las <strong>StorageClass</strong> que utilicen estos Volume plugin
+y tengan la propiedad <code>allowVolumeExpansion: true</code>, ampliarán de forma dinámica
+el PV y su recurso asociado.</p>
+<h4 id="redimensionar-persistent-volume-con-sistema-de-ficheros">Redimensionar Persistent Volume con sistema de ficheros</h4>
+<p>Al ampliar un PV que contenga un sistema de ficheros, el redimensionamiento solo
+se realizará cuando el PVC se utilice por un nuevo Pod y sea en modo
+<code>ReadWrite</code>.</p>
+<h4 id="redimensionar-persistent-volume-claim-en-uso">Redimensionar Persistent Volume Claim en uso</h4>
+<p>Esta característica actualmente esta en versión beta y debe ser activada en las
+<strong>feature gates</strong>.</p>
+<p>Los Volume de tipo <strong>FlexVolume</strong> permiten su ampliación mientras están siendo
+utilizados por un Pod.</p>
+<h2 id="persistentvolume">PersistentVolume</h2>
+<p>Los PV contienen las siguientes propiedades que configuran el recurso de
+almacenamiento a utilizar:</p>
+<ul>
+<li><strong>Capacity</strong>: Tamaño de almacenamiento.</li>
+<li><strong>Volume Mode</strong>: Existen dos modos disponibles: <ul>
+<li><code>Filesystem</code>: (Por defecto) El Volume se monta dentro de un directorio del
+  Pod. Si el Volume se respalda en un dispositivo por bloques y el
+  dispositivo se encuentra vacío, se crea un sistema de ficheros antes de
+  montarlo por primera vez.</li>
+<li><code>Block</code>: Este modo permite montar un dispositivo por bloques directamente
+  en un Pod sin necesidad de sistema de ficheros. Esto acelera el acceso del
+  Pod al Volume, pero la aplicación debe saber trabajar directamente con un
+  dispositivo por bloques.</li>
+</ul>
+</li>
+<li>
+<p><strong>Access Modes</strong>: Modos de acceso del Volume (depende del Volume plugin):</p>
+<ul>
+<li><code>ReadWriteOnce</code>: El PV puede montarse con permiso de lectura-escritura por
+  un único nodo.</li>
+<li><code>ReadOnlyMany</code>: El PV solo se puede montar con permiso de lectura por varios
+  nodos.</li>
+<li><code>ReadWriteMany</code>: El PV puede montarse con permiso de lectura-escritura por varios nodos.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>Solo puede utilizarse un <strong>Access Mode</strong> a la vez</p>
+</div>
+</li>
+<li>
+<p><strong>StorageClass</strong>: Indica el nombre de la <strong>StorageClass</strong> a la que pertenece.
+  Los PV con una <strong>StorageClass</strong> asignada solo pueden ser vinculados por los
+  PVC que utilicen la misma <strong>StorageClass</strong>. Por otro lado, los Pv que no
+  definan una <strong>StorageClass</strong> solo podrán vincularse con los PVC que tampoco
+  tengan una definida.</p>
+</li>
+<li><strong>Mount Options</strong>: Opciones adicionales para montar el PV en el nodo.</li>
+<li><strong>PersistentVolume Type</strong>: Al igual que con los Volume de los Pods, existen varios
+  tipos de <strong>PersistentVolume</strong>.</li>
+<li><strong>Node Affinity</strong>: Necesario sólo para los Volume de tipo <strong>Local</strong>. Sirve
+  para limitar desde qué nodos se puede acceder al PV. Esto también implica que
+  los Pods que utilicen este PV sólo podrán desplegarse en los nodos
+  seleccionados por la affinity.</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Ejemplo</p>
+<p>Ejemplo de <strong>PersistentVolume</strong> de tipo <code>nfs</code>:
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">PersistentVolume</span>
+<span class="nt">metadata</span><span class="p">:</span>
+  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">pv0003</span>
+<span class="nt">spec</span><span class="p">:</span>
+  <span class="nt">capacity</span><span class="p">:</span>
+    <span class="nt">storage</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">5Gi</span>
+  <span class="nt">volumeMode</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Filesystem</span>
+  <span class="nt">accessModes</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">ReadWriteOnce</span>
+  <span class="nt">persistentVolumeReclaimPolicy</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Delete</span>
+  <span class="nt">storageClassName</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">slow</span>
+  <span class="nt">mountOptions</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">hard</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">nfsvers=4.1</span>
+  <span class="nt">nfs</span><span class="p">:</span>
+    <span class="nt">path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/tmp</span>
+    <span class="nt">server</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">172.17.0.2</span>
+</code></pre></div></p>
+</div>
+<h2 id="persistentvolumeclaim">PersistentVolumeClaim</h2>
+<p>Los PVC contienen las siguientes propiedades que determinan qué tipo de
+almacenamiento solicitar:</p>
+<ul>
+<li><strong>Access Modes</strong>: Modos de acceso del Volume. (Son los mismos que para los PV)</li>
+<li><strong>Volume Mode</strong>: Modo en el que se va a consumir el PV. (Son los mismos que para los PV)</li>
+<li><strong>Resources</strong>: Recursos de almacenamiento que solicitan.</li>
+<li><strong>Selector</strong>: Permite filtrar aún más que PV utilizar. Sólo se vincularán los
+  PV que dispongan (o no) de ciertas Labels.</li>
+<li><strong>StorageClass</strong>: Permite seleccionar sólo los PV de una cierta
+  <strong>StorageClass</strong>. Si se especifica un valor <code>""</code>, solo se podrán utilizar PV
+  sin una <strong>StorageClass</strong> definida. Si no se define <strong>StorageClass</strong>, se
+  utilizarán los PV de la <strong>StorageClass</strong> "por defecto", si esta configurada, o
+  de lo contrario sólo los PV sin clase.</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Ejemplo</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">PersistentVolumeClaim</span>
+<span class="nt">metadata</span><span class="p">:</span>
+  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">myclaim</span>
+<span class="nt">spec</span><span class="p">:</span>
+  <span class="nt">accessModes</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">ReadWriteOnce</span>
+  <span class="nt">volumeMode</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Filesystem</span>
+  <span class="nt">resources</span><span class="p">:</span>
+    <span class="nt">requests</span><span class="p">:</span>
+      <span class="nt">storage</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">8Gi</span>
+  <span class="nt">storageClassName</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">slow</span>
+  <span class="nt">selector</span><span class="p">:</span>
+    <span class="nt">matchLabels</span><span class="p">:</span>
+      <span class="nt">release</span><span class="p">:</span> <span class="s">&quot;stable&quot;</span>
+    <span class="nt">matchExpressions</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt">key</span><span class="p">:</span> <span class="nv">environment</span><span class="p p-Indicator">,</span><span class="nt"> operator</span><span class="p">:</span> <span class="nv">In</span><span class="p p-Indicator">,</span><span class="nt"> values</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">dev</span><span class="p p-Indicator">]}</span>
+</code></pre></div>
+
+</div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../volumes/" title="Volumes" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Volumes
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../storage-classes/" title="Storage Classes" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Storage Classes
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.d710d30a.min.js"></script>
+      <script src="../../assets/javascripts/bundle.b39636ac.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.a68abb33.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>

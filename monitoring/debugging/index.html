@@ -1,0 +1,1499 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.4.0">
+    
+    
+      
+        <title>Debugging - Apuntes CKA-CKAD</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.fe0cca5b.min.css">
+      
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#debugging" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="../.." title="Apuntes CKA-CKAD" class="md-header-nav__button md-logo" aria-label="Apuntes CKA-CKAD">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Apuntes CKA-CKAD
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Debugging
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Apuntes CKA-CKAD" class="md-nav__button md-logo" aria-label="Apuntes CKA-CKAD">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Apuntes CKA-CKAD
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Componentes Kubernetes
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Componentes Kubernetes" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Componentes Kubernetes
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../components/components/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../components/control-components/" title="Componentes del Control Plane" class="md-nav__link">
+      Componentes del Control Plane
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../components/node-components/" title="Componentes de los Nodos" class="md-nav__link">
+      Componentes de los Nodos
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Objetos Kubernetes
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Objetos Kubernetes" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Objetos Kubernetes
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../objects/objects/" title="Gestión de objetos Kubernetes" class="md-nav__link">
+      Gestión de objetos Kubernetes
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../objects/containers/" title="Containers" class="md-nav__link">
+      Containers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-3" type="checkbox" id="nav-3-3">
+    
+    <label class="md-nav__link" for="nav-3-3">
+      Workloads
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Workloads" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Workloads
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../objects/pods/" title="Pods" class="md-nav__link">
+      Pods
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../objects/controllers/" title="Controllers" class="md-nav__link">
+      Controllers
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Networking
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Networking" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Networking
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../network/service/" title="Service" class="md-nav__link">
+      Service
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../network/endpoint/" title="EndpointSlices" class="md-nav__link">
+      EndpointSlices
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../network/dns/" title="DNS" class="md-nav__link">
+      DNS
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../network/kube-proxy/" title="kube-proxy" class="md-nav__link">
+      kube-proxy
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../network/ingress/" title="Ingress" class="md-nav__link">
+      Ingress
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../network/policies/" title="Network Policies" class="md-nav__link">
+      Network Policies
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Storage
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Storage" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Storage
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../storage/volumes/" title="Volumes" class="md-nav__link">
+      Volumes
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../storage/persistent-volume/" title="Persistent Volume & Claim" class="md-nav__link">
+      Persistent Volume & Claim
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../storage/storage-classes/" title="Storage Classes" class="md-nav__link">
+      Storage Classes
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Configuración
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Configuración" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Configuración
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../configuration/best-practices/" title="Best Practices" class="md-nav__link">
+      Best Practices
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../configuration/configmap/" title="ConfigMap" class="md-nav__link">
+      ConfigMap
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../configuration/secret/" title="Secret" class="md-nav__link">
+      Secret
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../configuration/resources/" title="Gestionar recursos de los Containers" class="md-nav__link">
+      Gestionar recursos de los Containers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../configuration/pod-overhead/" title="Pod Overhead" class="md-nav__link">
+      Pod Overhead
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../configuration/priority/" title="Prioridad de los Pods y Apropiación" class="md-nav__link">
+      Prioridad de los Pods y Apropiación
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../configuration/kubeconfig/" title="Configurar context del cluster" class="md-nav__link">
+      Configurar context del cluster
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      Policies
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Policies" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Policies
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../policies/limit-ranges/" title="Limit Ranges" class="md-nav__link">
+      Limit Ranges
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../policies/resource-quota/" title="Resource Quotas" class="md-nav__link">
+      Resource Quotas
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../policies/security-policies/" title="Pod Security Policies" class="md-nav__link">
+      Pod Security Policies
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      Security
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Security" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Security
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../security/cloud-security/" title="Cloud Native Security" class="md-nav__link">
+      Cloud Native Security
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../security/service-account/" title="ServiceAccount" class="md-nav__link">
+      ServiceAccount
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../security/rbac/" title="RBAC" class="md-nav__link">
+      RBAC
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../security/security-context/" title="Security Context" class="md-nav__link">
+      Security Context
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
+    
+    <label class="md-nav__link" for="nav-9">
+      Scheduling & Eviction
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Scheduling & Eviction" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Scheduling & Eviction
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../scheduling/scheduler/" title="Kubernetes Scheduler" class="md-nav__link">
+      Kubernetes Scheduler
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../scheduling/taints-tolerations/" title="Taints & Tolerations" class="md-nav__link">
+      Taints & Tolerations
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../scheduling/assign-pods/" title="Asignar Pods a nodos" class="md-nav__link">
+      Asignar Pods a nodos
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../CKA" title="Cluster Administration" class="md-nav__link">
+      Cluster Administration
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-11" type="checkbox" id="nav-11" checked>
+    
+    <label class="md-nav__link" for="nav-11">
+      Monitorización y Debugging
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Monitorización y Debugging" data-md-level="1">
+      <label class="md-nav__title" for="nav-11">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Monitorización y Debugging
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Debugging
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
+        </span>
+      </label>
+    
+    <a href="./" title="Debugging" class="md-nav__link md-nav__link--active">
+      Debugging
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting-de-aplicaciones" class="md-nav__link">
+    Troubleshooting de aplicaciones
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#debugging-pods" class="md-nav__link">
+    Debugging Pods
+  </a>
+  
+    <nav class="md-nav" aria-label="Debugging Pods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#contenedores-efimeros-alpha" class="md-nav__link">
+    Contenedores efímeros (alpha)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#acceder-logs-de-init-container" class="md-nav__link">
+    Acceder logs de Init Container
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mensaje-de-terminacion" class="md-nav__link">
+    Mensaje de terminación
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#debugging-replication-controllers" class="md-nav__link">
+    Debugging Replication Controllers
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#debugging-services" class="md-nav__link">
+    Debugging Services
+  </a>
+  
+    <nav class="md-nav" aria-label="Debugging Services">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comprobar-que-kube-proxy-funciona-correctamente" class="md-nav__link">
+    Comprobar que kube-proxy funciona correctamente
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#debugging-del-cluster" class="md-nav__link">
+    Debugging del cluster
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-12" type="checkbox" id="nav-12">
+    
+    <label class="md-nav__link" for="nav-12">
+      Comandos kubectl
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Comandos kubectl" data-md-level="1">
+      <label class="md-nav__title" for="nav-12">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Comandos kubectl
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../kubectl/imperative/" title="Creación imperativa de recursos" class="md-nav__link">
+      Creación imperativa de recursos
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../kubectl/edit-patch/" title="Editar/Actualizar recursos" class="md-nav__link">
+      Editar/Actualizar recursos
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../other/json-path/" title="JSON Path" class="md-nav__link">
+      JSON Path
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting-de-aplicaciones" class="md-nav__link">
+    Troubleshooting de aplicaciones
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#debugging-pods" class="md-nav__link">
+    Debugging Pods
+  </a>
+  
+    <nav class="md-nav" aria-label="Debugging Pods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#contenedores-efimeros-alpha" class="md-nav__link">
+    Contenedores efímeros (alpha)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#acceder-logs-de-init-container" class="md-nav__link">
+    Acceder logs de Init Container
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mensaje-de-terminacion" class="md-nav__link">
+    Mensaje de terminación
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#debugging-replication-controllers" class="md-nav__link">
+    Debugging Replication Controllers
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#debugging-services" class="md-nav__link">
+    Debugging Services
+  </a>
+  
+    <nav class="md-nav" aria-label="Debugging Services">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comprobar-que-kube-proxy-funciona-correctamente" class="md-nav__link">
+    Comprobar que kube-proxy funciona correctamente
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#debugging-del-cluster" class="md-nav__link">
+    Debugging del cluster
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  
+                
+                
+                <h1 id="debugging">Debugging</h1>
+<h2 id="troubleshooting-de-aplicaciones">Troubleshooting de aplicaciones</h2>
+<h2 id="debugging-pods">Debugging Pods</h2>
+<p>El primer paso para debugar una aplicación, es ver el estado del Pod y los
+eventos acontecidos recientemente.</p>
+<p>Mediante el comando <code>kubectl describe pod &lt;pod-name&gt;</code>, se puede obtener
+información general del Pod:</p>
+<ul>
+<li>Configuración de los contenedores</li>
+<li>Estado actual del Pod</li>
+<li>Eventos del Pod</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Una forma de obtener información más detallada acerca de un Pod es mediante el
+comando <code>kubectl get pod &lt;pod-name&gt; -o yaml</code>. De esta forma se puede obtener en
+formato YAML toda la información que hay almacenada en Kubernetes sobre ese Pod.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Información</p>
+<p>Posibles estados del Pod y motivos:</p>
+<ul>
+<li>
+<p><code>Pending</code>: significa que el Pod no puede ser emplazado en un nodo. Esto puede suceder porque no hay recursos o nodos suficientes, o de utilizar la propiedad <code>hostPort</code>, que no hay nodos con ese puerto disponible.
+<strong>Solución</strong>: Eliminar algunos Pods, ajustar las <em>requests</em> de recursos de los Pods o añadir nuevos nodos.</p>
+</li>
+<li>
+<p><code>Waiting</code>: el Pod se ha desplegado en un nodo, pero no puede ser ejecutado. Normalmente la causa más común de esto es que el Pod no haya podido hacer pull de la imagen Docker, correctamente. 
+<strong>Solución</strong>: Habría que revisar que el nombre de la imagen sea la correcta, que la imagen exista en el repositorio o probar manualmente de realizar un <code>docker pull &lt;image&gt;</code> en el nodo para comprobar que la imagen pueda ser obtenida.</p>
+</li>
+</ul>
+</div>
+<p><strong>Pod no arranca correctamente</strong><br />
+Si el Pod falla o no está en estado <em>healthy</em>, hay que analizar los logs de las
+aplicaciones para buscar más información. Para ello ejecutar:</p>
+<p><div class="highlight"><pre><span></span><code>kubectl logs &lt;pod-name&gt; &lt;container-name&gt;
+
+<span class="c1">## Para ver los logs de un contenedor que haya fallado anteriormente</span>
+kubectl logs --previous &lt;pod-name&gt; &lt;container-name&gt;
+</code></pre></div>
+Otra forma para debugar el Pod es accediendo a sus contenedores mediante una
+Shell, si estos disponen de <em>debugging utilities</em> que puedan ser utilizadas
+(p.ej. realizar un <code>cat</code> sobre un fichero concreto):</p>
+<p><div class="highlight"><pre><span></span><code>kubectl <span class="nb">exec</span> -it cassandra -- sh
+</code></pre></div>
+<strong>Pod no tiene comportamiento esperado</strong></p>
+<p>Si el problema es que el Pod no se ejecuta como se esperaba, es posible que haya
+algún tipo de error en su descriptor de despliegue que haga que no se ejecute
+correctamente (p.ej. si hay algún error tipográfico, esa propiedad es ignorada).</p>
+<p>Para validar si se trata de un error con el descriptor, habría que eliminar el
+Pod y volver a ejecutarlo con la opción <code>--validate</code>:</p>
+<div class="highlight"><pre><span></span><code>kubectl apply --validate -f mypod.yaml
+</code></pre></div>
+
+<p>Si hubiera algún tipo de problema, saltaría un mensaje de error informando de
+qué está mal.</p>
+<p>Otra comprobación sería obtener la descripción del Pod desplegado y compararla
+con la del descriptor para ver si existe alguna diferencia (sin tener en cuenta
+los campos que añade el servidor de la API. p.ej. <code>startTime</code>).</p>
+<div class="highlight"><pre><span></span><code>kubectl get pods/mypod -o yaml &gt; mypod-on-apiserver.yaml
+</code></pre></div>
+
+<h3 id="contenedores-efimeros-alpha">Contenedores efímeros (alpha)</h3>
+<p>Cuando acceder via Shell a dentro de un contenedor no sea posible o suficiente
+(p.ej. porque la imagen que se esté utilizando no disponga de <em>debugging
+utilities</em>), otra alternativa son los contenedores efímeros.</p>
+<p>Estos contenedores se levantarán dentro del mismo Pod y compartirán el mismo
+"namespace de procesos". De esta forma, el nuevo contenedor compartirá el mismo
+arbol de procesos y sistema de ficheros que el contenedor de la aplicación.</p>
+<p>El comando a ejecutar para levantar un contenedor efímero:</p>
+<div class="highlight"><pre><span></span><code>kubectl alpha debug -it ephemeral-demo --image<span class="o">=</span>busybox --target<span class="o">=</span>&lt;app-container-name&gt;
+</code></pre></div>
+
+<h3 id="acceder-logs-de-init-container">Acceder logs de <em>Init Container</em></h3>
+<p>Para leer los logs de un <em>Init Container</em> ejecutar:</p>
+<div class="highlight"><pre><span></span><code>kubectl logs &lt;pod-name&gt; -c &lt;init-container-name&gt;
+</code></pre></div>
+
+<div class="admonition info">
+<p>Si los contenedores ejecutan un script bash, se puede ejecutar <code>set -x</code> al
+inicio del script para que se graben en el logs los comandos que se van a ir
+ejecutando.</p>
+</div>
+<h3 id="mensaje-de-terminacion">Mensaje de terminación</h3>
+<p>Cuando un contenedor termina su ejecución (ya sea porque ha terminado de
+ejecutar su proceso o por un error), vuelca un "mensaje de terminación" sobre el
+fichero <code>/dev/termination-log</code>. Si el contenedor volcara el mensaje en otro
+fichero, se puede indicar en la definición del Pod con la propiedad
+<code>spec.containers[].terminationMessagePath</code>.</p>
+<p>Adicionalmente se puede añadir la propiedad
+<code>spec.containers[].terminationMessagePolicy: "FallbackToLogsOnError"</code>, para que
+si el contenedor termina con error y el fichero del "mensaje de terminación"
+está vacío, utilice el último bloque de logs del contenedor como
+"mensaje de terminación".</p>
+<h2 id="debugging-replication-controllers">Debugging Replication Controllers</h2>
+<p>Dado que los Replication Controllers solo se encargan de gestionar el número de
+Pods desplegados, para debugarlos únicamente hay que debugar los Pods.</p>
+<p>Adicionalmente se pueden observar los eventos de los <strong>Replica Set</strong> para ver si
+hubiera algún problema a la hora de crear nuevas instancias:</p>
+<div class="highlight"><pre><span></span><code>kubectl describe rs &lt;replica-set-name&gt;
+</code></pre></div>
+
+<h2 id="debugging-services">Debugging <strong>Services</strong></h2>
+<p>Para empezar a debugar un <strong>Service</strong> hay que revisar que tenga el número de
+<strong>Endpoints</strong> asociados correcto. Debe coincidir con el número de Pods del
+<strong>Service</strong>. Para comprobarlo:</p>
+<div class="highlight"><pre><span></span><code>kubectl get endpoints &lt;service-name&gt;
+</code></pre></div>
+
+<p>Si el comando anterior no devolviera el mismo número de direcciones IP que de
+Pods, habría que revisar que se obtenga el listado correcto de Pods al buscar
+por las labels del <strong>Service</strong>:</p>
+<p><div class="highlight"><pre><span></span><code>kubectl get pods --selector<span class="o">=</span><span class="nv">label1</span><span class="o">=</span>value1,label2<span class="o">=</span>value2
+</code></pre></div>
+Si el listado de Pods es el correcto, es posible que no se estén exponiendo los
+puertos correctos. Habría que comprobar que los <code>containerPort</code> de los Pod
+coinciden con los <code>targetPort</code> del Service.</p>
+<p>Si por el contrario, los <strong>Endpoints</strong> si tienen IP's, pero una vez se ha
+establecido conexión con el Service, la conexión se cae, es probable que el Pod
+no esté funcionando correctamente. En ese caso habría que revisar el contador de
+reinicios del Pod.</p>
+<p>Otra comprobación sería intentar acceder al Pod directamente a través de su
+dirección IP.</p>
+<p>Si en ningún caso la aplicación es accesible, es posible que la aplicación no
+esté exponiendo el mismo puerto que haya configurado en el Pod. Para comprobarlo
+ejecutar desde dentro el cluster:</p>
+<div class="highlight"><pre><span></span><code>wget -gO- &lt;pod-IP&gt;:&lt;port&gt;
+</code></pre></div>
+
+<p><strong>El Service no resuelve por DNS</strong></p>
+<p>Para comprobar que el dominio del <strong>Service</strong> resuelve correctamente, habría que
+utilizar la funcionalidad <code>nslookup</code> desde un Pod en el mismo Namespace que la aplicación.</p>
+<div class="highlight"><pre><span></span><code>nslookup &lt;service-name&gt;
+</code></pre></div>
+
+<p>Si fallara, podria ser que Pod y <strong>Service</strong> estubieran en Namespaces
+diferentes. Para ello comprobar:</p>
+<div class="highlight"><pre><span></span><code>nslookup &lt;service-name&gt;.&lt;service-namespace&gt;
+</code></pre></div>
+
+<p>Si aún así fallara, habría quer comprobar el FQDN del <strong>Service</strong>:</p>
+<p><div class="highlight"><pre><span></span><code>nslookup &lt;service-name&gt;.&lt;service-namespace&gt;.svc.cluster.local
+</code></pre></div>
+Si resuelve correctamente, habría que comprobar el fichero <code>/etc/resolv.conf</code>
+del Pod para ver que sea correcto:</p>
+<ul>
+<li>Debe contener una entrada <code>nameserver</code> con la IP del servicio DNS del cluster.</li>
+<li>Debe contener una entrada <code>search</code> con todos los sufijos del cluster:<ul>
+<li><code>&lt;service-name&gt;.&lt;service-namespace&gt;.svc.cluster.local</code> para encontrar los
+  <strong>Service</strong> del mismo Namespace.</li>
+<li><code>svc.cluster.local</code> para encontrar los <strong>Service</strong> de cualquier Namespace.</li>
+<li><code>cluster.local</code> para encontrar dominios del cluster.</li>
+</ul>
+</li>
+<li>Debe contener una entrada <code>options</code> con la propiedad <code>ndots</code> con un valor
+  suficientemente alto como para que el servidor DNS considere los <em>search
+  paths</em>.</li>
+</ul>
+<p>Si aún asi el comando fallara, sólo quedaría comprobar el dominio de la API de
+Kubernetes, ya que este siempre debería funcionar:</p>
+<div class="highlight"><pre><span></span><code>nslookup kubernetes.default
+</code></pre></div>
+
+<p>Si este comando falla, habria que comprobar que el <strong>kube-proxy</strong> funcione
+correctamente.</p>
+<p><strong>El Service no funciona por IP</strong></p>
+<p>Comprobar que el <strong>Service</strong> es accesible via IP. La dirección IP se puede
+obtener con el comando <code>kubectl get svc &lt;service-name&gt;</code>. Para comprobar que se
+puede acceder via IP ejecutar desde dentro del cluster:</p>
+<div class="highlight"><pre><span></span><code>wget -qO- &lt;service-IP&gt;:&lt;port&gt;
+</code></pre></div>
+
+<p>Si no funcionara, habría que revisar que el <strong>Service</strong> esté correctamente
+configurado con los puertos y protocolos correctos y que los Pods se estén
+ejecutando correctamente.</p>
+<h3 id="comprobar-que-kube-proxy-funciona-correctamente">Comprobar que <strong>kube-proxy</strong> funciona correctamente</h3>
+<p>Si los <strong>Endpoints</strong> y la configuración de los <strong>Services</strong> es correcta, es
+probable que el problema esté en la implementación que se ejecute por debajo de los
+<strong>Services</strong>. En la mayoria de clusters Kubernetes será <strong>kube-proxy</strong>.</p>
+<p>Primero habría que comprobar que el proceso de <strong>kube-proxy</strong> se esté ejecutando
+en el nodo. Para ello, habrá que acceder via SSH y ejecutar el siguiente
+comando:</p>
+<div class="highlight"><pre><span></span><code>ps auxw <span class="p">|</span> grep kube-proxy
+</code></pre></div>
+
+<p>Si el proceso se está ejecutando, habria que comprobar en los logs, si está
+teniendo dificultades para contactar al _master. Se puede revisar el fichero
+<code>/var/log/kube-proxy.log</code>.</p>
+<p>Si aparecen mensajes de error habría que revisar la configuración del nodo y
+revisar si el proceso de instalación se ha realizado correctamente. Si la
+instalación se ha realizado manualmente, debería de haberse instalado el binario
+<code>conntrack</code>, por lo que habría que revisar que se haya instalado correctamente.</p>
+<p>En función del modo de ejecución del <strong>kube-proxy</strong> (<code>iptables</code> o <code>ipvs</code>),
+habría que revisar la tabla de redirecciones correspondiente para comprobar que
+las entradas son correctas:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">## iptables</span>
+iptables-save <span class="p">|</span> grep &lt;service-name&gt; <span class="c1"># -&gt; Debe devolver una regla KUBE-SERVICES y una cadena KUBE-SVC-&lt;hash&gt;</span>
+
+<span class="c1">## ipvs</span>
+ipvsadm -ln <span class="c1"># -&gt; Debe devolver una entrada con la &lt;service-IP&gt;:&lt;service-port&gt; del Service y tantas entradas &lt;pod-IP&gt;:&lt;pod-port&gt; como Pods tenga el Service</span>
+</code></pre></div>
+
+<p>Cuando el <strong>kube-proxy</strong> opera en modo <code>iptables</code>, se puede dar el caso que un
+Pod no pueda accederse a si mismo a través de la IP del Service. En ese caso
+habría que revisar que el flag <code>hairpin-mode</code> de <strong>kube-proxy</strong> esté
+correctamente configurado (ver <a href="https://kubernetes.io/docs/tasks/debug-application-cluster/debug-service/#a-pod-fails-to-reach-itself-via-the-service-ip">Documentación</a> para más detalle).</p>
+<h2 id="debugging-del-cluster">Debugging del cluster</h2>
+<p>Se puede obtener el estado actual de los nodos con el comando <code>kubectl get nodes</code>.</p>
+<p>Mediante el comando <code>kubectl describe node &lt;node-name&gt;</code>, se puede obtener
+información general del nodo:</p>
+<ul>
+<li>Configuración del nodo</li>
+<li>Estado actual del nodo</li>
+<li>Capacidad del nodo</li>
+<li>Recursos disponibles y en uso</li>
+<li>Eventos del nodo</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Una forma de obtener información más detallada acerca de un nodo es mediante el
+comando <code>kubectl get node &lt;node-name&gt; -o yaml</code>. De esta forma se puede obtener en
+formato YAML toda la información que hay almacenada en Kubernetes sobre ese
+nodo.</p>
+</div>
+<p>Si se desea obtener información más detallada del estado global del cluster se
+puede ejecutar el comando:</p>
+<div class="highlight"><pre><span></span><code>kubectl cluster-info dump
+</code></pre></div>
+
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>Este comando devuelve TODA a información almacenada en el cluster
+(descriptores, logs, eventos...), por lo que hayq que realizar un proceso de
+búsqueda para encontrar la información que se desea.</p>
+</div>
+<p>Para comprobar que todos los componentes del cluster operan correctamente hay
+que ir nodo por nodo observando los diferentes logs:</p>
+<p><strong>Nodos master</strong>
+- API server: <code>/var/log/kube-apiserver.log</code>
+- Scheduler: <code>/var/log/kube-scheduler.log</code>
+- Controller: <code>/var/log/kube-controller-manager.log</code></p>
+<p><strong>Nodos worker</strong>
+- kubelet: <code>/var/log/kubelet.log</code>
+- kube-proxy: <code>/var/log/kube-proxy.log</code></p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../../scheduling/assign-pods/" title="Asignar Pods a nodos" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Asignar Pods a nodos
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../../kubectl/imperative/" title="Creación imperativa de recursos" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Creación imperativa de recursos
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.d710d30a.min.js"></script>
+      <script src="../../assets/javascripts/bundle.b39636ac.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.a68abb33.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>

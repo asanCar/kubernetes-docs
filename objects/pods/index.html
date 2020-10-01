@@ -1,0 +1,2165 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.4.0">
+    
+    
+      
+        <title>Pods - Apuntes CKA-CKAD</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.fe0cca5b.min.css">
+      
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#pods" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="../.." title="Apuntes CKA-CKAD" class="md-header-nav__button md-logo" aria-label="Apuntes CKA-CKAD">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Apuntes CKA-CKAD
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Pods
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Apuntes CKA-CKAD" class="md-nav__button md-logo" aria-label="Apuntes CKA-CKAD">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Apuntes CKA-CKAD
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Componentes Kubernetes
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Componentes Kubernetes" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Componentes Kubernetes
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../components/components/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../components/control-components/" title="Componentes del Control Plane" class="md-nav__link">
+      Componentes del Control Plane
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../components/node-components/" title="Componentes de los Nodos" class="md-nav__link">
+      Componentes de los Nodos
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+    
+    <label class="md-nav__link" for="nav-3">
+      Objetos Kubernetes
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Objetos Kubernetes" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Objetos Kubernetes
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../objects/" title="Gestión de objetos Kubernetes" class="md-nav__link">
+      Gestión de objetos Kubernetes
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../containers/" title="Containers" class="md-nav__link">
+      Containers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-3" type="checkbox" id="nav-3-3" checked>
+    
+    <label class="md-nav__link" for="nav-3-3">
+      Workloads
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Workloads" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Workloads
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Pods
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
+        </span>
+      </label>
+    
+    <a href="./" title="Pods" class="md-nav__link md-nav__link--active">
+      Pods
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#networking" class="md-nav__link">
+    Networking
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#storage" class="md-nav__link">
+    Storage
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pod-phase" class="md-nav__link">
+    Pod phase
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pod-conditions" class="md-nav__link">
+    Pod Conditions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#container-probes" class="md-nav__link">
+    Container Probes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pod-container-status" class="md-nav__link">
+    Pod &amp; Container Status
+  </a>
+  
+    <nav class="md-nav" aria-label="Pod &amp; Container Status">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#container-status" class="md-nav__link">
+    Container Status
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#anadir-condiciones-al-pod-status-pod-readiness" class="md-nav__link">
+    Añadir condiciones al Pod Status (Pod Readiness)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#restart-policy" class="md-nav__link">
+    Restart Policy
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#init-containers" class="md-nav__link">
+    Init Containers
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pod-preset" class="md-nav__link">
+    Pod Preset
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pod-topology-spread-constraints" class="md-nav__link">
+    Pod Topology Spread Constraints
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pod-disruption-budget" class="md-nav__link">
+    Pod Disruption Budget
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#downward-api" class="md-nav__link">
+    Downward API
+  </a>
+  
+    <nav class="md-nav" aria-label="Downward API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#variables-de-entorno" class="md-nav__link">
+    Variables de entorno
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#volume-files" class="md-nav__link">
+    Volume files
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#container-registry-privado" class="md-nav__link">
+    Container Registry privado
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pods-multi-container" class="md-nav__link">
+    Pods multi-container
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../controllers/" title="Controllers" class="md-nav__link">
+      Controllers
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Networking
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Networking" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Networking
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../network/service/" title="Service" class="md-nav__link">
+      Service
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../network/endpoint/" title="EndpointSlices" class="md-nav__link">
+      EndpointSlices
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../network/dns/" title="DNS" class="md-nav__link">
+      DNS
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../network/kube-proxy/" title="kube-proxy" class="md-nav__link">
+      kube-proxy
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../network/ingress/" title="Ingress" class="md-nav__link">
+      Ingress
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../network/policies/" title="Network Policies" class="md-nav__link">
+      Network Policies
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Storage
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Storage" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Storage
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../storage/volumes/" title="Volumes" class="md-nav__link">
+      Volumes
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../storage/persistent-volume/" title="Persistent Volume & Claim" class="md-nav__link">
+      Persistent Volume & Claim
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../storage/storage-classes/" title="Storage Classes" class="md-nav__link">
+      Storage Classes
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Configuración
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Configuración" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Configuración
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../configuration/best-practices/" title="Best Practices" class="md-nav__link">
+      Best Practices
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../configuration/configmap/" title="ConfigMap" class="md-nav__link">
+      ConfigMap
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../configuration/secret/" title="Secret" class="md-nav__link">
+      Secret
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../configuration/resources/" title="Gestionar recursos de los Containers" class="md-nav__link">
+      Gestionar recursos de los Containers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../configuration/pod-overhead/" title="Pod Overhead" class="md-nav__link">
+      Pod Overhead
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../configuration/priority/" title="Prioridad de los Pods y Apropiación" class="md-nav__link">
+      Prioridad de los Pods y Apropiación
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../configuration/kubeconfig/" title="Configurar context del cluster" class="md-nav__link">
+      Configurar context del cluster
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      Policies
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Policies" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Policies
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../policies/limit-ranges/" title="Limit Ranges" class="md-nav__link">
+      Limit Ranges
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../policies/resource-quota/" title="Resource Quotas" class="md-nav__link">
+      Resource Quotas
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../policies/security-policies/" title="Pod Security Policies" class="md-nav__link">
+      Pod Security Policies
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      Security
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Security" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Security
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../security/cloud-security/" title="Cloud Native Security" class="md-nav__link">
+      Cloud Native Security
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../security/service-account/" title="ServiceAccount" class="md-nav__link">
+      ServiceAccount
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../security/rbac/" title="RBAC" class="md-nav__link">
+      RBAC
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../security/security-context/" title="Security Context" class="md-nav__link">
+      Security Context
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
+    
+    <label class="md-nav__link" for="nav-9">
+      Scheduling & Eviction
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Scheduling & Eviction" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Scheduling & Eviction
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../scheduling/scheduler/" title="Kubernetes Scheduler" class="md-nav__link">
+      Kubernetes Scheduler
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../scheduling/taints-tolerations/" title="Taints & Tolerations" class="md-nav__link">
+      Taints & Tolerations
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../scheduling/assign-pods/" title="Asignar Pods a nodos" class="md-nav__link">
+      Asignar Pods a nodos
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../CKA" title="Cluster Administration" class="md-nav__link">
+      Cluster Administration
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-11" type="checkbox" id="nav-11">
+    
+    <label class="md-nav__link" for="nav-11">
+      Monitorización y Debugging
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Monitorización y Debugging" data-md-level="1">
+      <label class="md-nav__title" for="nav-11">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Monitorización y Debugging
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../monitoring/debugging/" title="Debugging" class="md-nav__link">
+      Debugging
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-12" type="checkbox" id="nav-12">
+    
+    <label class="md-nav__link" for="nav-12">
+      Comandos kubectl
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Comandos kubectl" data-md-level="1">
+      <label class="md-nav__title" for="nav-12">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Comandos kubectl
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../kubectl/imperative/" title="Creación imperativa de recursos" class="md-nav__link">
+      Creación imperativa de recursos
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../kubectl/edit-patch/" title="Editar/Actualizar recursos" class="md-nav__link">
+      Editar/Actualizar recursos
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../other/json-path/" title="JSON Path" class="md-nav__link">
+      JSON Path
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#networking" class="md-nav__link">
+    Networking
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#storage" class="md-nav__link">
+    Storage
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pod-phase" class="md-nav__link">
+    Pod phase
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pod-conditions" class="md-nav__link">
+    Pod Conditions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#container-probes" class="md-nav__link">
+    Container Probes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pod-container-status" class="md-nav__link">
+    Pod &amp; Container Status
+  </a>
+  
+    <nav class="md-nav" aria-label="Pod &amp; Container Status">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#container-status" class="md-nav__link">
+    Container Status
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#anadir-condiciones-al-pod-status-pod-readiness" class="md-nav__link">
+    Añadir condiciones al Pod Status (Pod Readiness)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#restart-policy" class="md-nav__link">
+    Restart Policy
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#init-containers" class="md-nav__link">
+    Init Containers
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pod-preset" class="md-nav__link">
+    Pod Preset
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pod-topology-spread-constraints" class="md-nav__link">
+    Pod Topology Spread Constraints
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pod-disruption-budget" class="md-nav__link">
+    Pod Disruption Budget
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#downward-api" class="md-nav__link">
+    Downward API
+  </a>
+  
+    <nav class="md-nav" aria-label="Downward API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#variables-de-entorno" class="md-nav__link">
+    Variables de entorno
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#volume-files" class="md-nav__link">
+    Volume files
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#container-registry-privado" class="md-nav__link">
+    Container Registry privado
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pods-multi-container" class="md-nav__link">
+    Pods multi-container
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  
+                
+                
+                <h1 id="pods">Pods</h1>
+<p>La unidad básica de despliegue en Kubernetes son los <strong>Pods</strong>. Los Pods
+normalmente contienen un único Container, pero existen situaciones en
+las que se requiere desplegar un Pod con múltiples Containers, por ejemplo para
+externalizar los logs del Container aun concentrador de logs.</p>
+<p>Todos los contenedores de un mismo Pod son levantados en un mismo nodo y
+comparten recursos, se pueden comunicar entre ellos de forma local y se pueden
+coordinar en la forma en que se destruyen.</p>
+<p>Los contenedores dentro de un Pod pueden ser de dos tipos:</p>
+<ul>
+<li><strong>Init containers:</strong> Se ejecutan antes que los <strong>app containers</strong> y suelen ser
+  procesos finitos.</li>
+<li><strong>App containers:</strong> Se empiezan a ejecutar después de que hayan terminado los
+  <strong>init containers</strong> y contienen la aplicación principal del Pod.</li>
+</ul>
+<h3 id="networking">Networking</h3>
+<p>Cada Pod recibe una dirección IP única. Esta IP es compartida por todos los
+Containers del Pod. Esto implica que cada contenedor deberá exponerse (si 
+deben exponerse varios contenedores) con un puerto diferente.</p>
+<p>Los Containers de un mismo Pod, pueden comunicarse entre si mediante <code>localhost</code>.</p>
+<h3 id="storage">Storage</h3>
+<p>Los Containers de un mismo Pod, pueden compartir datos mediante Volumes. Los
+Volumes, depende de cómo se configuren, permiten persistir esos datos y asegurar
+que seguirán estando disponibles ante un reinicio del Pod.</p>
+<h3 id="pod-phase">Pod phase</h3>
+<p>Dentro del campo <code>status</code> de un Pod (campo creado en tiempo de ejecución),
+existe el campo <code>phase</code> que identifica en que fase está un Pod, dentro de su
+ciclo de vida.</p>
+<p>Estos son los valores posibles de <code>phase</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Valor</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Pending</code></td>
+<td>El Pod ha sido aceptado por Kubernetes, pero falta por descargar alguna Container Image. Esta fase, incluye el proceso de <em>scheduling</em> del Pod y el de descarga de las imágenes de los Containers en el nodo. Si no encuentra un nodo disponible, se queda en este estado a la espera</td>
+</tr>
+<tr>
+<td><code>Running</code></td>
+<td>El Pod ya ha sido desplegado en un nodo y todos los Containers han sido creados. Esta fase, incluye el proceso de inicio o reinicio de un Container, así como cuando existe al menos un Container en ejecución</td>
+</tr>
+<tr>
+<td><code>Succeeded</code></td>
+<td>Todos los Containers del Pod han terminado correctamente y no van a ser reiniciados</td>
+</tr>
+<tr>
+<td><code>Failed</code></td>
+<td>Todos los Containers del Pod han terminado, pero alguno de ellos con error. Esto puede ser porque un Container haya terminado con un código de retorno diferente de zero, o que el sistema haya terminado el proceso</td>
+</tr>
+<tr>
+<td><code>Unknown</code></td>
+<td>El estado del Pod no se puede obtener (debido a un problema de comunicación con el nodo o el Pod)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="pod-conditions">Pod Conditions</h3>
+<p>En el campo <code>status</code> también existen un conjunto de condiciones que pueden
+ayudar en las tareas de troubleshooting. Puede verse el estado de estas
+condiciones con <code>kubectl describe pod</code>.</p>
+<p>Listado de condiciones:</p>
+<ul>
+<li><code>PodScheduled</code>: <code>True</code> cuando el Pod ha sido registrado en un nodo.</li>
+<li><code>Initialized</code>: <code>True</code> cuando todos los <strong>init containers</strong> del Pod se han iniciado correctamente.</li>
+<li><code>ContainersReady</code>: <code>True</code> cuando todos los Container del Pod están listos.</li>
+<li><code>Ready</code>: <code>True</code> cuando el Pod esta disponible para recibir peticiones y ya puede ser añadido
+  en los balanceadores de carga de los Services.</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title"><code>kubectl describe pod</code></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># ...</span>
+Conditions:
+  Type              Status
+  Initialized       True 
+  Ready             True 
+  ContainersReady   True 
+  PodScheduled      True 
+<span class="c1"># ...</span>
+</code></pre></div>
+
+</div>
+<h3 id="container-probes">Container Probes</h3>
+<p>Los <strong>kubelet</strong> realizan periódicamente sondeos sobre los Containers para
+evaluar su correcto funcionamiento. Para ello ejecuta un Handler que expone el
+mismo Container. Existen 3 tipos de Handlers:</p>
+<ul>
+<li>
+<p><strong>ExecAction:</strong> Ejecuta un comando dentro del Container y se considera
+  satisfactorio si devuelve un código de estado <code>0</code>.</p>
+<div class="admonition example">
+<div class="highlight"><pre><span></span><code><span class="nt">readinessProbe</span><span class="p">:</span>
+  <span class="nt">exec</span><span class="p">:</span>
+    <span class="nt">command</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">cat</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">/app/is_ready</span>
+</code></pre></div>
+
+</div>
+</li>
+<li>
+<p><strong>TCPSocketAction:</strong> Realiza un comprobación TCP contra la dirección IP del
+  Container, a un puerto específico. El resultado es satisfactorio si el puerto
+  está abierto.</p>
+<div class="admonition example">
+<div class="highlight"><pre><span></span><code><span class="nt">readinessProbe</span><span class="p">:</span>
+  <span class="nt">tcpSocket</span><span class="p">:</span>
+    <span class="nt">port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3306</span>
+</code></pre></div>
+
+</div>
+</li>
+<li>
+<p><strong>HTTPGetAction:</strong> Realiza una petición HTTP GET contra la IP del Container, a
+  un puerto y ruta específicas. El resultado es satisfactorio si el código de
+  respuesta está entre 200 (incluido) y 400 (excluido).</p>
+<div class="admonition example">
+<div class="highlight"><pre><span></span><code><span class="nt">readinessProbe</span><span class="p">:</span>
+  <span class="nt">httpGet</span><span class="p">:</span>
+    <span class="nt">path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/api/ready</span>
+    <span class="nt">port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">8080</span>
+</code></pre></div>
+
+</div>
+</li>
+</ul>
+<p>Los resultados posibles son:</p>
+<ul>
+<li>Success: resultado satisfactorio.</li>
+<li>Failure: el Container no ha pasado el diagnóstico.</li>
+<li>Unknown: el diagnóstico ha fallado.</li>
+</ul>
+<p>Existen 3 tipos de sondeos para los que el <strong>kubelet</strong> puede tomar distintas
+acciones:</p>
+<ul>
+<li>
+<p><strong>Liveness Probe:</strong> Indica que el Container se está ejecutando correctamente.
+  Si esta sonda falla, el <strong>kubelet</strong> destruye el Container y puede que sea
+  reiniciado en función de su "política de reinicio".</p>
+<blockquote>
+<p>Si no se especifica esta sonda, se considera que el Container se
+ejecuta correctamente si está en estado <code>Running</code>.</p>
+</blockquote>
+<details class="note"><summary>¿Cuándo se recomienda utilizar Liveness Probe?</summary><p>Cuando el proceso que se ejecuta en el Container no sea capaz de terminar
+debido a un error o un mal funcionamiento, ya que por defecto el
+<strong>kubelet</strong> considerará que el Container estará <em>healthy</em>, sin importar
+si la aplicación tiene errores en su código o configuración</p>
+</details>
+</li>
+<li>
+<p><strong>Readiness Probe:</strong> Indica que el Container está listo para recibir
+  peticiones. Si esta sonda falla, el Endpoints Controller, elimina la IP del
+  Pod de todos los Endpoints en los que esté registrado.</p>
+<blockquote>
+<p>Si no se especifica esta sonda, se concede un <em>delay</em> inicial, en el que se considera
+como si la sonda hubiera fallado. Pasado ese periodo inicial, la sonda pasa a tener
+resultado satisfactorio y la aplicación empieza a recibir tráfico.</p>
+</blockquote>
+<details class="note"><summary>¿Cuándo se recomienda utilizar Readiness Probe?</summary><p>Si debido a la lógica de negocio de la aplicación, cuando se levanta el
+contenedor, aún no está preparada para recibir peticiones, esta sonda 
+permite indicar cuándo el Container está preparado para empezar a recibir
+tráfico (p.ej. comprobando el endpoint <code>/health</code>, si la aplicación lo provee). </p>
+<p>Muy útil para los Containers que realicen procesos al inicio después de 
+levantarse (p.ej. cargar datos, preparar entorno...).</p>
+<p>También es muy útil cuando se despliegan múltiples instancias, ya que 
+hasta que estas no estén listas, no empezarán a recibir tráfico.</p>
+</details>
+</li>
+<li>
+<p><strong>Startup Probe:</strong> Indica cuándo la aplicación del Container se ha iniciado.
+  Cuando se especifica esta sonda, no se empezarán a evaluar el resto de sondas,
+  hasta que esta dé un resultado favorable. Si esta sonda falla,
+  el <strong>kubelet</strong> destruye el Container y puede que sea reiniciado en función de
+  su "política de reinicio".</p>
+<blockquote>
+<p>Si no se especifica esta sonda, se considera por defecto que el resultado es
+satisfactorio.</p>
+</blockquote>
+<details class="note"><summary>¿Cuándo se recomienda utilizar Startup Probe?</summary><p>Cuando la aplicación tarda mucho en iniciar la primera vez, esta sonda
+permite evaluar la misma condición que la <strong>Liveness Probe</strong>, pero con 
+un periodo de gracia superior.</p>
+<p>De esta forma el periodo de gracia del <strong>Liveness Probe</strong>, no se ve 
+afectado por la carga inicial de la aplicación.</p>
+</details>
+</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Ejemplo</p>
+<p>Ejemplo de Pod con <strong>Readiness Probe</strong>:
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Pod</span>
+<span class="nt">metadata</span><span class="p">:</span>
+  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">my-pod</span>
+<span class="nt">spec</span><span class="p">:</span>
+  <span class="nt">containers</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">my-app</span>
+      <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">my-image</span>
+      <span class="nt">ports</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">containerPort</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">8080</span>
+      <span class="nt">readinessProbe</span><span class="p">:</span>
+        <span class="nt">httpGet</span><span class="p">:</span>
+          <span class="nt">path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/api/ready</span>
+          <span class="nt">port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">8080</span>
+        <span class="nt">initDelaySeconds</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">10</span> <span class="c1">## Delay inicial</span>
+        <span class="nt">periodSeconds</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">5</span> <span class="c1">## Cada cuando evaluar la sonda</span>
+        <span class="nt">failureThreshold</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">8</span> <span class="c1">## Número máximo de reintentos fallidos  </span>
+</code></pre></div></p>
+</div>
+<h3 id="pod-container-status">Pod &amp; Container Status</h3>
+<p>El estado del Pod depende los estados de los Containers que contiene.</p>
+<h4 id="container-status">Container Status</h4>
+<p>Una vez un Pod es registrado en un nodo, el <strong>kubelet</strong> empieza a crear los
+Contenedores con el Container Runtime especificado. </p>
+<p>Los posibles estados del Conatiner son:</p>
+<ul>
+<li>
+<p><code>Waiting</code>: Estado por defecto, cuando no está en <code>Running</code> o <code>Terminated</code>.
+  Durante este estado, se descargan las imágenes, se montan los Volumes...
+  Al ejecutar <code>kubectl describe pod &lt;pod_name&gt;</code>, este estado suele ir acompañado
+  de un mensaje que aporta más información del estado:</p>
+<div class="admonition example">
+<div class="highlight"><pre><span></span><code><span class="c1">#...</span>
+  State:          Waiting
+    Reason:       ErrImagePull
+<span class="c1">#...</span>
+</code></pre></div>
+
+</div>
+</li>
+<li>
+<p><code>Running</code>: Indica que el Container se está ejecutando sin problemas. Indica
+  también que todos los <code>postStart</code> hooks se han ejecutado correctamente.
+  Este estado va acompañado de la fecha en la que entró en este estado:</p>
+<div class="admonition example">
+<div class="highlight"><pre><span></span><code><span class="c1">#...</span>
+  State:          Running
+    Started:      Wed, <span class="m">30</span> Jan <span class="m">2019</span> <span class="m">16</span>:46:38 +0530
+<span class="c1">#...</span>
+</code></pre></div>
+
+</div>
+</li>
+<li>
+<p><code>Terminated</code>: Indica que el Container ha completado su ejecución y se ha
+  detenido. Puede que el Container haya completado su ejecución de forma
+  satisfactoria o con error. Antes de pasar a este estado se van a ejecutar
+  todos los <code>preStop</code> hooks. 
+  Este estado va acompañado de la razón por la que se ha
+  completado la ejecución, el código de retorno, el tiempo de inicio del
+  Container y el de su finalización: </p>
+<div class="admonition example">
+<div class="highlight"><pre><span></span><code><span class="c1">#...</span>
+  State:          Terminated
+    Reason:       Completed
+    Exit Code:    <span class="m">0</span>
+    Started:      Wed, <span class="m">30</span> Jan <span class="m">2019</span> <span class="m">11</span>:45:26 +0530
+    Finished:     Wed, <span class="m">30</span> Jan <span class="m">2019</span> <span class="m">11</span>:45:26 +0530
+<span class="c1">#...</span>
+</code></pre></div>
+
+</div>
+</li>
+</ul>
+<h4 id="anadir-condiciones-al-pod-status-pod-readiness">Añadir condiciones al Pod Status (Pod Readiness)</h4>
+<p>Existe la posibilidad de añadir condiciones adicionales, para evaluar el estado
+del Pod. </p>
+<p>Para ello se utiliza la propiedad <code>readinessGates</code>, dónde se indica el nombre de
+qué condiciones adicionales se esperan recibir en el campo <code>status.conditions</code> y
+que deben tener <code>status: "True"</code>.</p>
+<p>Las condiciones deben ser añadidas en el campo <code>status.conditions</code> mediante una
+acción PATCH contra la API de Kubernetes. Esto debe ser llevado a cabo por una
+aplicación o opeator, que utilice una <a href="https://kubernetes.io/docs/reference/using-api/client-libraries/">librería cliente de
+Kubernetes</a>.</p>
+<p>El Pod no pasará a estar listo, hasta que todos los Containers del Pod
+estén listos y todas las condiciones indicadas en el <code>readinessGates</code> evalúen a
+<code>True</code>.</p>
+<p>Si todos los Containers están disponibles, pero alguna de las condiciones
+adicionales no, el Pod solo tendrá la condición <code>ContainersReady</code> a <code>True</code>.</p>
+<div class="admonition example">
+<div class="highlight"><pre><span></span><code>kind: Pod
+<span class="c1">#...</span>
+spec:
+  readinessGates:
+    - conditionType: <span class="s2">&quot;www.example.com/feature-1&quot;</span>
+status:
+  conditions:
+    - type: Ready                              <span class="c1"># a built in PodCondition</span>
+      status: <span class="s2">&quot;False&quot;</span>
+      lastProbeTime: null
+      lastTransitionTime: <span class="m">2018</span>-01-01T00:00:00Z
+    - type: <span class="s2">&quot;www.example.com/feature-1&quot;</span>        <span class="c1"># an extra PodCondition</span>
+      status: <span class="s2">&quot;False&quot;</span>
+      lastProbeTime: null
+      lastTransitionTime: <span class="m">2018</span>-01-01T00:00:00Z
+  containerStatuses:
+    - containerID: docker://abcd...
+      ready: <span class="nb">true</span>
+<span class="c1">#...</span>
+</code></pre></div>
+
+</div>
+<h3 id="restart-policy">Restart Policy</h3>
+<p>Dentro de la definición de un Pod se puede especificar la política de reinicio
+que van a tener todos los Containers que contiene, pudiendo tomar los valores
+<code>Always</code> (por defecto), <code>OnFailure</code> y <code>Never</code>.</p>
+<p>Cada vez que el <strong>kubelet</strong> reinicia un Container, se produce un <em>back-off
+delay</em> que aumenta de forma exponencial (10s, 20s, 40s...) hasta un máximo de
+5 minutos. Una vez el Container lleva 10 minutos funcionando correctamente sin
+reinicios, el contador del <em>delay</em> vuelve a 0.</p>
+<h2 id="init-containers">Init Containers</h2>
+<p>Estos contenedores son útiles para ejecutar utilidades o scripts de
+configuración que no estén presentes en la Image de la aplicación principal.</p>
+<p>Este listado de contenedores se ejecuta de forma secuencial en el orden en el
+que se hayan definido en el Pod (hasta que no termine de ejecutarse el primero,
+no empezará a ejecutarse el segundo). No empezarán a ejecutarse los <strong>app
+containers</strong> hasta que el último <strong>init container</strong> haya completado su ejecución.</p>
+<p>Al igual que los <strong>app containers</strong>, el estado de estos contenedores puede
+consultarse en el campo <code>status.initContainerStatuses</code>
+(<code>status.containerStatuses</code> para los <strong>app containers</strong>) del Pod.</p>
+<div class="admonition info">
+<p>Dado que la ejecución de los <strong>init containers</strong> puede darse varias veces
+(debido a un reinicio, a un reintento de ejecución...), el proceso a
+ejecutar debería ser idempotente.</p>
+</div>
+<div class="admonition warning">
+<p>Los <strong>init containers</strong> no soportan los <code>lifecycle</code> hooks, <code>livenessProbe</code>,
+<code>readinessProbe</code> o <code>startupProbe</code>.</p>
+</div>
+<div class="admonition warning">
+<p>Un cambio en la Image de un <strong>init container</strong>, reiniciará todos los
+Containers, pero un cambio en la Image de un <strong>app container</strong>, solo
+reiniciará ese mismo Container.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Utilidades de los Init Containers</p>
+<ul>
+<li>
+<p>Las Image de estos contenedores pueden contener utilidades que vayan a ser
+  necesarias para la configuración de la aplicación y con ello simplificar el
+  contenido de las Images de las aplicaciones principales.
+  Esto ahorra tener que generar una nueva Image que a parte de la aplicación
+  principal contenga herramientas "innecesarias" y añade más seguridad a las
+  Image de los <strong>app containers</strong> reduciendo los posibles vectores de ataque.</p>
+</li>
+<li>
+<p>Ofrece un mecanismo para bloquear la ejecución de los <strong>app containers</strong> de 
+  un Pod, hasta que no se cumpla cierta condición. De esta forma se puede hacer 
+  que ciertos Pods "dependan" de otros.</p>
+</li>
+<li>
+<p>Pueden utilizar datos sensibles para sus ejecuciones (p.ej. mediante Secrets), 
+  sin tener que exponérselos a los <strong>app containers</strong>.</p>
+</li>
+</ul>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Ejemplo init container</p>
+<p>Este Pod depende de que dos Service (<code>myservice</code> y <code>mydb</code>) estén
+disponibles, para poder arrancar:
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Pod</span>
+<span class="nt">metadata</span><span class="p">:</span>
+  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">myapp-pod</span>
+  <span class="nt">labels</span><span class="p">:</span>
+    <span class="nt">app</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">myapp</span>
+<span class="nt">spec</span><span class="p">:</span>
+  <span class="nt">containers</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">myapp-container</span>
+    <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">busybox:1.28</span>
+    <span class="nt">command</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;sh&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;-c&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;echo</span><span class="nv"> </span><span class="s">The</span><span class="nv"> </span><span class="s">app</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">running!</span><span class="nv"> </span><span class="s">&amp;&amp;</span><span class="nv"> </span><span class="s">sleep</span><span class="nv"> </span><span class="s">3600&#39;</span><span class="p p-Indicator">]</span>
+  <span class="nt">initContainers</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">init-myservice</span>
+    <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">busybox:1.28</span>
+    <span class="nt">command</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;sh&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;-c&#39;</span><span class="p p-Indicator">,</span> <span class="s">&quot;until</span><span class="nv"> </span><span class="s">nslookup</span><span class="nv"> </span><span class="s">myservice.$(cat</span><span class="nv"> </span><span class="s">/var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local;</span><span class="nv"> </span><span class="s">do</span><span class="nv"> </span><span class="s">echo</span><span class="nv"> </span><span class="s">waiting</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">myservice;</span><span class="nv"> </span><span class="s">sleep</span><span class="nv"> </span><span class="s">2;</span><span class="nv"> </span><span class="s">done&quot;</span><span class="p p-Indicator">]</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">init-mydb</span>
+    <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">busybox:1.28</span>
+    <span class="nt">command</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;sh&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;-c&#39;</span><span class="p p-Indicator">,</span> <span class="s">&quot;until</span><span class="nv"> </span><span class="s">nslookup</span><span class="nv"> </span><span class="s">mydb.$(cat</span><span class="nv"> </span><span class="s">/var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local;</span><span class="nv"> </span><span class="s">do</span><span class="nv"> </span><span class="s">echo</span><span class="nv"> </span><span class="s">waiting</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">mydb;</span><span class="nv"> </span><span class="s">sleep</span><span class="nv"> </span><span class="s">2;</span><span class="nv"> </span><span class="s">done&quot;</span><span class="p p-Indicator">]</span>
+</code></pre></div></p>
+</div>
+<h2 id="pod-preset">Pod Preset</h2>
+<p>Este es un objeto Kubernetes que permite modificar la especificación de un Pod en
+tiempo de creación, permitiendo añadir elementos tales como variables de entorno,
+Volumes o VolumeMounts (aplica tanto a los contenedores de aplicaciones como a
+los <strong>initContainer</strong>). De esta manera el desarrollador del manifest del Pod no
+debe de conocer esas configuraciones.</p>
+<p>Los <strong>PodPreset</strong> tienen un Selector, para aplicar los cambios sólo en los Pods que
+tengan ciertas Labels. </p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Se pueden excluir Pods para los que no se quiera aplicar el
+<strong>PodPreset</strong>, añadiendo en el Pod la anotación:
+<code>podpreset.admission.kubernetes.io/exclude: "true"</code>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">PodPreset</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">settings.k8s.io/v1alpha1</span>
+<span class="nt">kind</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">PodPreset</span>
+<span class="nt">metadata</span><span class="p">:</span>
+  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">allow-database</span>
+<span class="nt">spec</span><span class="p">:</span>
+  <span class="nt">selector</span><span class="p">:</span>
+    <span class="nt">matchLabels</span><span class="p">:</span>
+      <span class="nt">role</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">frontend</span>
+  <span class="nt">env</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">DB_PORT</span>
+      <span class="nt">value</span><span class="p">:</span> <span class="s">&quot;6379&quot;</span>
+  <span class="nt">volumeMounts</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">mountPath</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/cache</span>
+      <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cache-volume</span>
+  <span class="nt">volumes</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cache-volume</span>
+      <span class="nt">emptyDir</span><span class="p">:</span> <span class="p p-Indicator">{}</span>
+</code></pre></div>
+
+</div>
+<div class="admonition example">
+<p class="admonition-title">Pod</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Pod</span>
+<span class="nt">metadata</span><span class="p">:</span>
+  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">website</span>
+  <span class="nt">labels</span><span class="p">:</span>
+    <span class="nt">app</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">website</span>
+    <span class="nt">role</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">frontend</span>
+<span class="nt">spec</span><span class="p">:</span>
+  <span class="nt">containers</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">website</span>
+      <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">nginx</span>
+      <span class="nt">ports</span><span class="p">:</span>
+        <span class="p p-Indicator">-</span> <span class="nt">containerPort</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">80</span>
+</code></pre></div>
+
+</div>
+<h2 id="pod-topology-spread-constraints">Pod Topology Spread Constraints</h2>
+<p>Existe una propiedad <code>spec.topologySpreadConstraints</code> en
+los Pod, que permite que los Pods se desplieguen de forma balanceada entre las
+distintas topologías de nodos. Una topología de nodos se considera a un grupo de
+nodos que tiene una Label en común con el mismo valor.</p>
+<p>Por ejemplo si hubiera 4 nodos, la mitad tuviera una Label <code>zone=zoneA</code> y la
+otra mitad <code>zone=zoneB</code>, se podría decir que existen 2 topologías de nodos
+(tomando como referencia únicamente esta Label).</p>
+<div class="highlight"><pre><span></span><code>+---------------+---------------+
+|     zoneA     |     zoneB     |
++-------+-------+-------+-------+
+| node1 | node2 | node3 | node4 |
++-------+-------+-------+-------+
+</code></pre></div>
+
+<div class="admonition example">
+<p>Partiendo de esta misma topología y que hubieran desplegados varios Pods de
+la siguiente manera, con Label <code>foo=bar</code>:
+<div class="highlight"><pre><span></span><code>+---------------+---------------+
+|     zoneA     |     zoneB     |
++-------+-------+-------+-------+
+| node1 | node2 | node3 | node4 |
++-------+-------+-------+-------+
+|   P   |   P   |   P   |       |
++-------+-------+-------+-------+
+</code></pre></div></p>
+<p>Si se intentara desplegar el siguiente Pod:
+<div class="highlight"><pre><span></span><code><span class="nt">kind</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Pod</span>
+<span class="nt">apiVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">metadata</span><span class="p">:</span>
+  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mypod</span>
+  <span class="nt">labels</span><span class="p">:</span>
+    <span class="nt">foo</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">bar</span>
+<span class="nt">spec</span><span class="p">:</span>
+  <span class="nt">topologySpreadConstraints</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">maxSkew</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span> <span class="c1"># Número máximo de Pods que pueden diferir las topologías</span>
+    <span class="nt">topologyKey</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">zone</span> <span class="c1"># Label key de referencia para identificar topologías</span>
+    <span class="nt">whenUnsatisfiable</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">DoNotSchedule</span> <span class="c1"># o ScheduleAnyway para no ser restrictivo</span>
+    <span class="nt">labelSelector</span><span class="p">:</span> <span class="c1"># Pods que se utilizarán para evaluar la restricción</span>
+      <span class="nt">matchLabels</span><span class="p">:</span>
+        <span class="nt">foo</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">bar</span>
+  <span class="nt">containers</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">pause</span>
+    <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">k8s.gcr.io/pause:3.1</span>
+</code></pre></div></p>
+<p>Sólo se podría desplegar en los nodos de la <code>zoneB</code> ya que de lo contrario 
+se estaría incumpliendo la condición <code>maxSkew</code>, pudiendo quedar de la siguiente 
+manera:
+<div class="highlight"><pre><span></span><code>+---------------+---------------+      +---------------+---------------+
+|     zoneA     |     zoneB     |      |     zoneA     |     zoneB     |
++-------+-------+-------+-------+      +-------+-------+-------+-------+
+| node1 | node2 | node3 | node4 |  OR  | node1 | node2 | node3 | node4 |
++-------+-------+-------+-------+      +-------+-------+-------+-------+
+|   P   |   P   |   P   |   P   |      |   P   |   P   |  P P  |       |
++-------+-------+-------+-------+      +-------+-------+-------+-------+
+</code></pre></div></p>
+</div>
+<div class="admonition info">
+<p>Estas restricciones se pueden combinar con los <code>PodAffinity</code> y <code>PodAntiAffinity</code>
+para agrupar Pods dentro de una misma topología o limitar a 1 Pod por topología.</p>
+</div>
+<div class="admonition info">
+<p>Pueden definirse multiples restricciones de topología, utilizando diferentes
+<code>topologyKey</code>. Para que el Pod se despliegue, se deben cumplir todas 
+las restricciones definidas.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>Hay que tener cuidado con el valor <code>maxSkew</code> que se defina en cada 
+restricción, pues se pueden dar conflictos y los Pods no se desplegarán.</p>
+<p>Por ejemplo:</p>
+<p><strong>Escenario inicial:</strong>
+<div class="highlight"><pre><span></span><code>+---------------+-------+
+|     zoneA     | zoneB |
++-------+-------+-------+
+| node1 | node2 | node3 |
++-------+-------+-------+
+|  P P  |   P   |  P P  |
++-------+-------+-------+
+</code></pre></div></p>
+<p><strong>Pod a desplegar:</strong>
+<div class="highlight"><pre><span></span><code><span class="nt">kind</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Pod</span>
+<span class="nt">apiVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">metadata</span><span class="p">:</span>
+  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mypod</span>
+  <span class="nt">labels</span><span class="p">:</span>
+    <span class="nt">foo</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">bar</span>
+<span class="nt">spec</span><span class="p">:</span>
+  <span class="nt">topologySpreadConstraints</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">maxSkew</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+    <span class="nt">topologyKey</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">zone</span>
+    <span class="nt">whenUnsatisfiable</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">DoNotSchedule</span>
+    <span class="nt">labelSelector</span><span class="p">:</span>
+      <span class="nt">matchLabels</span><span class="p">:</span>
+        <span class="nt">foo</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">bar</span>
+  <span class="p p-Indicator">-</span> <span class="nt">maxSkew</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+    <span class="nt">topologyKey</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">node</span>
+    <span class="nt">whenUnsatisfiable</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">DoNotSchedule</span>
+    <span class="nt">labelSelector</span><span class="p">:</span>
+      <span class="nt">matchLabels</span><span class="p">:</span>
+        <span class="nt">foo</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">bar</span>
+  <span class="nt">containers</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">pause</span>
+    <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">k8s.gcr.io/pause:3.1</span>
+</code></pre></div></p>
+<p><strong>Resultado:</strong> El Pod no despliega porque si despliega en la <code>zoneB</code> 
+incumple el <code>maxSkew</code> de la segunda restricción, y si despliega en 
+la <code>zoneA</code> incumple el de la primera.</p>
+</div>
+<div class="admonition error">
+<p class="admonition-title">Cuidado!</p>
+<p>Cuando por ejemplo un Deployment reduce las instancias de Pod, 
+pueden darse casos de distribución de Pods desbalanceados (incumpliendo el
+<code>maxSkew</code>). </p>
+</div>
+<h2 id="pod-disruption-budget">Pod Disruption Budget</h2>
+<p>Para evitar que una afectación voluntaria (p.ej. actualizar un Deployment,
+forzando el redespliegue de sus Pods; eliminar manualmente un Pod; drenar un
+nodo...) desestabilice un despliegue en alta disponibilidad, se pueden definir
+<strong>PodDisruptionBudget</strong>, que limitan el número de Pods que se pueden tumbar de
+forma voluntaria, para asegurar el servicio a los usuarios.</p>
+<div class="admonition error">
+<p class="admonition-title">Cuidado!</p>
+<p>Los <strong>PodDisruptionBudgets</strong> no pueden evitar afectaciones involuntarias
+(caída de nodos, cortes de red...).</p>
+</div>
+<p>Los <strong>PodDisruptionBufget</strong> pueden contener las siguientes propiedades:</p>
+<ul>
+<li><code>spec.selector</code>: Label selector para elegit sobre qué Pods aplicar las restricciones.</li>
+<li><code>spec.maxUnavailable</code>: Se puede indicar el número máximo de Pods, o el porcentaje de Pods máximo, que pueden estar caídos.</li>
+<li><code>spec.minAvailable</code>: Se puede indicar el número mínimo de Pods, o el porcentaje de Pods mínimo, que deben estar levantados.</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Información</p>
+<p>Si se especifica <code>spec.maxUnavailable</code> o <code>spec.minAvailable</code> en forma porcentual y el número de Pods correspondiente no es un entero exacto, se toma el valor de redondear al alza (p.ej. el 50% de 7 Pods, serían 4 Pods). </p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Ejemplo</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">policy/v1beta1</span>
+<span class="nt">kind</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">PodDisruptionBudget</span>
+<span class="nt">metadata</span><span class="p">:</span>
+  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">zk-pdb</span>
+<span class="nt">spec</span><span class="p">:</span>
+  <span class="nt">maxUnavailable</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+  <span class="nt">selector</span><span class="p">:</span>
+    <span class="nt">matchLabels</span><span class="p">:</span>
+      <span class="nt">app</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">zookeeper</span>
+</code></pre></div>
+
+</div>
+<h2 id="downward-api">Downward API</h2>
+<p>Esta API permite a un Container obtener información de sí mismo, exponiendo
+campos del Pod y del Container.</p>
+<p>Existen dos formas de exponer estos campos:</p>
+<ul>
+<li><a href="#variables-de-entorno">Variables de entorno</a></li>
+<li><a href="#volume-files">Volume files</a></li>
+</ul>
+<h3 id="variables-de-entorno">Variables de entorno</h3>
+<p>Se pueden crear variables de entorno en la definición de un Pod, que tengan el
+valor de ciertos campos del Pod o del Container.</p>
+<p>Para que una variable de entorno tenga el valor de un campo del Pod hay que
+utilizar la stanza <code>fieldRef.fieldPath</code>, mientras que para referenciar un campo
+del Container se debe usar <code>resourceFieldRef</code>.</p>
+<div class="admonition info">
+<p class="admonition-title">Información</p>
+<p>Existen algunas variables de entorno que Kubernetes crea dentro del
+Container por defecto. Algunas de ellas son:</p>
+<ul>
+<li><strong>HOSTNAME:</strong> Nombre del Pod.</li>
+<li><strong>NODE_NAME:</strong> Nombre del nodo.</li>
+<li><strong>POD_NAMESPACE:</strong> Nombre del Namespace.</li>
+<li><strong>MY_SERVICE_HOST:</strong> IP del Service. (Para cada Service del Namespace)</li>
+<li><strong>MY_SERVICE_PORT:</strong> Puerto del Service. (Para cada Service del Namespace)</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>Las variables de entorno que hacen referencia a los <strong>Service</strong> del 
+Namespace, se crean en tiempo de creación del Pod, por lo que si se 
+añaden nuevos <strong>Service</strong> con posterioridad a la creación del Pod, no 
+estarán disponibles como variables de entorno.</p>
+</div>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Ejemplo variables de entorno</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Pod</span>
+<span class="nt">metadata</span><span class="p">:</span>
+  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">dapi-envars</span>
+<span class="nt">spec</span><span class="p">:</span>
+  <span class="nt">containers</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">test-container</span>
+      <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">k8s.gcr.io/busybox:1.24</span>
+      <span class="nt">command</span><span class="p">:</span> <span class="p p-Indicator">[</span> <span class="s">&quot;sh&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;-c&quot;</span><span class="p p-Indicator">]</span>
+      <span class="nt">args</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">while true; do</span>
+          <span class="l l-Scalar l-Scalar-Plain">echo -en &#39;\n&#39;;</span>
+          <span class="l l-Scalar l-Scalar-Plain">printenv MY_POD_IP MY_POD_SERVICE_ACCOUNT;</span>
+          <span class="l l-Scalar l-Scalar-Plain">printenv MY_CPU_REQUEST MY_CPU_LIMIT;</span>
+          <span class="l l-Scalar l-Scalar-Plain">sleep 10;</span>
+        <span class="l l-Scalar l-Scalar-Plain">done;</span>
+      <span class="nt">resources</span><span class="p">:</span>
+        <span class="nt">requests</span><span class="p">:</span>
+          <span class="nt">memory</span><span class="p">:</span> <span class="s">&quot;32Mi&quot;</span>
+          <span class="nt">cpu</span><span class="p">:</span> <span class="s">&quot;125m&quot;</span>
+        <span class="nt">limits</span><span class="p">:</span>
+          <span class="nt">memory</span><span class="p">:</span> <span class="s">&quot;64Mi&quot;</span>
+          <span class="nt">cpu</span><span class="p">:</span> <span class="s">&quot;250m&quot;</span>
+      <span class="nt">env</span><span class="p">:</span>
+      <span class="c1"># Campos del Pod</span>
+        <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MY_POD_IP</span>
+          <span class="nt">valueFrom</span><span class="p">:</span>
+            <span class="nt">fieldRef</span><span class="p">:</span>
+              <span class="nt">fieldPath</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">status.podIP</span>
+        <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MY_POD_SERVICE_ACCOUNT</span>
+          <span class="nt">valueFrom</span><span class="p">:</span>
+            <span class="nt">fieldRef</span><span class="p">:</span>
+              <span class="nt">fieldPath</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">spec.serviceAccountName</span>
+      <span class="c1"># Campos del Container</span>
+        <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MY_CPU_REQUEST</span>
+          <span class="nt">valueFrom</span><span class="p">:</span>
+            <span class="nt">resourceFieldRef</span><span class="p">:</span>
+              <span class="nt">containerName</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">test-container</span>
+              <span class="nt">resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">requests.cpu</span>
+        <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MY_CPU_LIMIT</span>
+          <span class="nt">valueFrom</span><span class="p">:</span>
+            <span class="nt">resourceFieldRef</span><span class="p">:</span>
+              <span class="nt">containerName</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">test-container</span>
+              <span class="nt">resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">limits.cpu</span>
+  <span class="nt">restartPolicy</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Never</span>
+</code></pre></div>
+
+</div>
+<h3 id="volume-files">Volume files</h3>
+<p>Otra forma de que el Container disponga de esa información es volcándola en
+ficheros y montarlos en el Container con un Volume.</p>
+<div class="admonition example">
+<p class="admonition-title">Ejemplo con Volumes</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Pod</span>
+<span class="nt">metadata</span><span class="p">:</span>
+  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">kubernetes-downwardapi-volume-example</span>
+  <span class="nt">labels</span><span class="p">:</span>
+    <span class="nt">zone</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">us-est-coast</span>
+    <span class="nt">cluster</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">test-cluster1</span>
+    <span class="nt">rack</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">rack-22</span>
+<span class="nt">spec</span><span class="p">:</span>
+  <span class="nt">containers</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">client-container</span>
+      <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">k8s.gcr.io/busybox</span>
+      <span class="nt">command</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;sh&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;-c&quot;</span><span class="p p-Indicator">]</span>
+      <span class="nt">args</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">while true; do</span>
+          <span class="l l-Scalar l-Scalar-Plain">if [[ -e /etc/podinfo/labels ]]; then</span>
+            <span class="l l-Scalar l-Scalar-Plain">echo -en &#39;\n\n&#39;; cat /etc/podinfo/labels; fi;</span>
+          <span class="l l-Scalar l-Scalar-Plain">if [[ -e /etc/podinfo/cpu_limit ]]; then</span>
+            <span class="l l-Scalar l-Scalar-Plain">echo -en &#39;\n&#39;; cat /etc/podinfo/cpu_limit; fi;</span>
+          <span class="l l-Scalar l-Scalar-Plain">sleep 5;</span>
+        <span class="l l-Scalar l-Scalar-Plain">done;</span>
+      <span class="nt">resources</span><span class="p">:</span>
+        <span class="nt">requests</span><span class="p">:</span>
+          <span class="nt">memory</span><span class="p">:</span> <span class="s">&quot;32Mi&quot;</span>
+          <span class="nt">cpu</span><span class="p">:</span> <span class="s">&quot;125m&quot;</span>
+        <span class="nt">limits</span><span class="p">:</span>
+          <span class="nt">memory</span><span class="p">:</span> <span class="s">&quot;64Mi&quot;</span>
+          <span class="nt">cpu</span><span class="p">:</span> <span class="s">&quot;250m&quot;</span>
+      <span class="nt">volumeMounts</span><span class="p">:</span>
+        <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">podinfo</span>
+          <span class="nt">mountPath</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/podinfo</span>
+  <span class="nt">volumes</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">podinfo</span>
+      <span class="nt">downwardAPI</span><span class="p">:</span>
+        <span class="nt">items</span><span class="p">:</span>
+  <span class="c1"># Campo del Pod</span>
+          <span class="p p-Indicator">-</span> <span class="nt">path</span><span class="p">:</span> <span class="s">&quot;labels&quot;</span>
+            <span class="nt">fieldRef</span><span class="p">:</span>
+              <span class="nt">fieldPath</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">metadata.labels</span>
+  <span class="c1"># Campo del Container</span>
+          <span class="p p-Indicator">-</span> <span class="nt">path</span><span class="p">:</span> <span class="s">&quot;cpu_limit&quot;</span>
+            <span class="nt">resourceFieldRef</span><span class="p">:</span>
+              <span class="nt">containerName</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">client-container</span>
+              <span class="nt">resource</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">limits.cpu</span>
+              <span class="nt">divisor</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1m</span>
+</code></pre></div>
+
+</div>
+<h2 id="container-registry-privado">Container Registry privado</h2>
+<p>Normalmente para acceder a Container Registries privados se requiere
+autenticarse contra ellos. </p>
+<p>Para que los Pods pueda hacer pull de las imágenes de
+un Registry privado, hay que crear primero un <strong>Secret</strong> con las credenciales:</p>
+<div class="highlight"><pre><span></span><code>kubectl create secret docker-registry regcred --docker-server<span class="o">=</span>&lt;your-registry-server&gt; --docker-username<span class="o">=</span>&lt;your-name&gt; --docker-password<span class="o">=</span>&lt;your-pword&gt; --docker-email<span class="o">=</span>&lt;your-email&gt;
+</code></pre></div>
+
+<p>A continuación hacer referencia a este <strong>Secret</strong> desde la definición del Pod
+con la stanza <code>imagePullSecrets</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Pod</span>
+<span class="nt">metadata</span><span class="p">:</span>
+  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">private-reg</span>
+<span class="nt">spec</span><span class="p">:</span>
+  <span class="nt">containers</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">private-reg-container</span>
+    <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">my-private-registry/my-image</span>
+  <span class="nt">imagePullSecrets</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">regcred</span>
+</code></pre></div>
+
+<h2 id="pods-multi-container">Pods multi-container</h2>
+<p>En ocasiones existe la necesidad de desplegar junto a las aplicaciones,
+elementos adicionales que los complementen. Por ejemplo, un agente de
+monitorización o un extractor de logs.</p>
+<p>Estos componentes no interesa acoplarlos al código de las aplicaciones, dado que
+tienen responsabilidades diferentes.</p>
+<p>En estos casos, se despliegan como nuevos contenedores, dentro del mismo Pod que
+la aplicación.</p>
+<p>Existen diferentes patrones de diseño (aunque todos ellos se implementen de la
+misma forma):</p>
+<ul>
+<li>
+<p><strong>Sidecar:</strong> Añadir un contenedor dentro del mismo Pod que la aplicación.</p>
+<div class="admonition example">
+<p><strong>Ejemplo:</strong> agente de extracción de logs, encargado de enviar logs de la
+aplicación al servidor de logs</p>
+</div>
+</li>
+<li>
+<p><strong>Adapter:</strong> Igual que el patrón <strong>Sidecar</strong>, pero en este caso los
+  contenedores se encargan de transformar la información que se envía y recíbe.</p>
+<div class="admonition example">
+<p><strong>Ejemplo:</strong> siguiendo con el ejemplo anterior, si las aplicaciones generan
+logs en distintos formatos, añadir un contenedor adicional, encargado de
+normalizar los logs, antes de enviarlos al servidor de logs.</p>
+</div>
+</li>
+<li>
+<p><strong>Ambassador:</strong> Igual que el patrón <strong>Sidecar</strong>, pero en este caso el
+  contenedor adicional, pretende abstraer a la aplicación del entorno en el que se
+  está ejecutando.</p>
+<div class="admonition example">
+<p><strong>Ejemplo:</strong> en el supuesto de existir varias bases de datos (DEV, PRE,
+PRO...), la aplicación apuntaría al contenedor <strong>Ambassador</strong>
+(al estar en el mismo Pod, via <code>localhost</code>), y este sería el encargado de
+apuntar a la base de datos correcta.</p>
+</div>
+</li>
+</ul>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../containers/" title="Containers" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Containers
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../controllers/" title="Controllers" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Controllers
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.d710d30a.min.js"></script>
+      <script src="../../assets/javascripts/bundle.b39636ac.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.a68abb33.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>

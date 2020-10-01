@@ -1,0 +1,2003 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.4.0">
+    
+    
+      
+        <title>Controllers - Apuntes CKA-CKAD</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.fe0cca5b.min.css">
+      
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#controllers" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="../.." title="Apuntes CKA-CKAD" class="md-header-nav__button md-logo" aria-label="Apuntes CKA-CKAD">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Apuntes CKA-CKAD
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Controllers
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Apuntes CKA-CKAD" class="md-nav__button md-logo" aria-label="Apuntes CKA-CKAD">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Apuntes CKA-CKAD
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Componentes Kubernetes
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Componentes Kubernetes" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Componentes Kubernetes
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../components/components/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../components/control-components/" title="Componentes del Control Plane" class="md-nav__link">
+      Componentes del Control Plane
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../components/node-components/" title="Componentes de los Nodos" class="md-nav__link">
+      Componentes de los Nodos
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+    
+    <label class="md-nav__link" for="nav-3">
+      Objetos Kubernetes
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Objetos Kubernetes" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Objetos Kubernetes
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../objects/" title="Gestión de objetos Kubernetes" class="md-nav__link">
+      Gestión de objetos Kubernetes
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../containers/" title="Containers" class="md-nav__link">
+      Containers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-3" type="checkbox" id="nav-3-3" checked>
+    
+    <label class="md-nav__link" for="nav-3-3">
+      Workloads
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Workloads" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Workloads
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../pods/" title="Pods" class="md-nav__link">
+      Pods
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Controllers
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
+        </span>
+      </label>
+    
+    <a href="./" title="Controllers" class="md-nav__link md-nav__link--active">
+      Controllers
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#replica-set" class="md-nav__link">
+    Replica Set
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deployment" class="md-nav__link">
+    Deployment
+  </a>
+  
+    <nav class="md-nav" aria-label="Deployment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#estrategia-y-estado-del-despliegue" class="md-nav__link">
+    Estrategia y estado del despliegue
+  </a>
+  
+    <nav class="md-nav" aria-label="Estrategia y estado del despliegue">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#estrategia-de-despliegue" class="md-nav__link">
+    Estrategia de despliegue
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#estado-del-despliegue" class="md-nav__link">
+    Estado del despliegue
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rollback" class="md-nav__link">
+    Rollback
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#escalado" class="md-nav__link">
+    Escalado
+  </a>
+  
+    <nav class="md-nav" aria-label="Escalado">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#manual" class="md-nav__link">
+    Manual
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#automatica" class="md-nav__link">
+    Automática
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#statefulset" class="md-nav__link">
+    StatefulSet
+  </a>
+  
+    <nav class="md-nav" aria-label="StatefulSet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#estrategia-de-despliegue_1" class="md-nav__link">
+    Estrategia de despliegue
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#daemonset" class="md-nav__link">
+    DaemonSet
+  </a>
+  
+    <nav class="md-nav" aria-label="DaemonSet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#estrategia-de-despliegue_2" class="md-nav__link">
+    Estrategia de despliegue
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#job" class="md-nav__link">
+    Job
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cronjob" class="md-nav__link">
+    CronJob
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#garbage-collector" class="md-nav__link">
+    Garbage Collector
+  </a>
+  
+    <nav class="md-nav" aria-label="Garbage Collector">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    API
+  </a>
+  
+    <nav class="md-nav" aria-label="API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#borrado-en-cascada-foreground" class="md-nav__link">
+    Borrado en cascada Foreground
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#borrado-en-cascada-background" class="md-nav__link">
+    Borrado en cascada Background
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#borrado-dejando-recursos-huerfanos" class="md-nav__link">
+    Borrado dejando recursos huérfanos
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Networking
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Networking" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Networking
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../network/service/" title="Service" class="md-nav__link">
+      Service
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../network/endpoint/" title="EndpointSlices" class="md-nav__link">
+      EndpointSlices
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../network/dns/" title="DNS" class="md-nav__link">
+      DNS
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../network/kube-proxy/" title="kube-proxy" class="md-nav__link">
+      kube-proxy
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../network/ingress/" title="Ingress" class="md-nav__link">
+      Ingress
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../network/policies/" title="Network Policies" class="md-nav__link">
+      Network Policies
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Storage
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Storage" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Storage
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../storage/volumes/" title="Volumes" class="md-nav__link">
+      Volumes
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../storage/persistent-volume/" title="Persistent Volume & Claim" class="md-nav__link">
+      Persistent Volume & Claim
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../storage/storage-classes/" title="Storage Classes" class="md-nav__link">
+      Storage Classes
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Configuración
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Configuración" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Configuración
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../configuration/best-practices/" title="Best Practices" class="md-nav__link">
+      Best Practices
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../configuration/configmap/" title="ConfigMap" class="md-nav__link">
+      ConfigMap
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../configuration/secret/" title="Secret" class="md-nav__link">
+      Secret
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../configuration/resources/" title="Gestionar recursos de los Containers" class="md-nav__link">
+      Gestionar recursos de los Containers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../configuration/pod-overhead/" title="Pod Overhead" class="md-nav__link">
+      Pod Overhead
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../configuration/priority/" title="Prioridad de los Pods y Apropiación" class="md-nav__link">
+      Prioridad de los Pods y Apropiación
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../configuration/kubeconfig/" title="Configurar context del cluster" class="md-nav__link">
+      Configurar context del cluster
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      Policies
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Policies" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Policies
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../policies/limit-ranges/" title="Limit Ranges" class="md-nav__link">
+      Limit Ranges
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../policies/resource-quota/" title="Resource Quotas" class="md-nav__link">
+      Resource Quotas
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../policies/security-policies/" title="Pod Security Policies" class="md-nav__link">
+      Pod Security Policies
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      Security
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Security" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Security
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../security/cloud-security/" title="Cloud Native Security" class="md-nav__link">
+      Cloud Native Security
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../security/service-account/" title="ServiceAccount" class="md-nav__link">
+      ServiceAccount
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../security/rbac/" title="RBAC" class="md-nav__link">
+      RBAC
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../security/security-context/" title="Security Context" class="md-nav__link">
+      Security Context
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
+    
+    <label class="md-nav__link" for="nav-9">
+      Scheduling & Eviction
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Scheduling & Eviction" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Scheduling & Eviction
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../scheduling/scheduler/" title="Kubernetes Scheduler" class="md-nav__link">
+      Kubernetes Scheduler
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../scheduling/taints-tolerations/" title="Taints & Tolerations" class="md-nav__link">
+      Taints & Tolerations
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../scheduling/assign-pods/" title="Asignar Pods a nodos" class="md-nav__link">
+      Asignar Pods a nodos
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../CKA" title="Cluster Administration" class="md-nav__link">
+      Cluster Administration
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-11" type="checkbox" id="nav-11">
+    
+    <label class="md-nav__link" for="nav-11">
+      Monitorización y Debugging
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Monitorización y Debugging" data-md-level="1">
+      <label class="md-nav__title" for="nav-11">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Monitorización y Debugging
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../monitoring/debugging/" title="Debugging" class="md-nav__link">
+      Debugging
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-12" type="checkbox" id="nav-12">
+    
+    <label class="md-nav__link" for="nav-12">
+      Comandos kubectl
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Comandos kubectl" data-md-level="1">
+      <label class="md-nav__title" for="nav-12">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Comandos kubectl
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../kubectl/imperative/" title="Creación imperativa de recursos" class="md-nav__link">
+      Creación imperativa de recursos
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../kubectl/edit-patch/" title="Editar/Actualizar recursos" class="md-nav__link">
+      Editar/Actualizar recursos
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../other/json-path/" title="JSON Path" class="md-nav__link">
+      JSON Path
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#replica-set" class="md-nav__link">
+    Replica Set
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deployment" class="md-nav__link">
+    Deployment
+  </a>
+  
+    <nav class="md-nav" aria-label="Deployment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#estrategia-y-estado-del-despliegue" class="md-nav__link">
+    Estrategia y estado del despliegue
+  </a>
+  
+    <nav class="md-nav" aria-label="Estrategia y estado del despliegue">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#estrategia-de-despliegue" class="md-nav__link">
+    Estrategia de despliegue
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#estado-del-despliegue" class="md-nav__link">
+    Estado del despliegue
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rollback" class="md-nav__link">
+    Rollback
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#escalado" class="md-nav__link">
+    Escalado
+  </a>
+  
+    <nav class="md-nav" aria-label="Escalado">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#manual" class="md-nav__link">
+    Manual
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#automatica" class="md-nav__link">
+    Automática
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#statefulset" class="md-nav__link">
+    StatefulSet
+  </a>
+  
+    <nav class="md-nav" aria-label="StatefulSet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#estrategia-de-despliegue_1" class="md-nav__link">
+    Estrategia de despliegue
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#daemonset" class="md-nav__link">
+    DaemonSet
+  </a>
+  
+    <nav class="md-nav" aria-label="DaemonSet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#estrategia-de-despliegue_2" class="md-nav__link">
+    Estrategia de despliegue
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#job" class="md-nav__link">
+    Job
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cronjob" class="md-nav__link">
+    CronJob
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#garbage-collector" class="md-nav__link">
+    Garbage Collector
+  </a>
+  
+    <nav class="md-nav" aria-label="Garbage Collector">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    API
+  </a>
+  
+    <nav class="md-nav" aria-label="API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#borrado-en-cascada-foreground" class="md-nav__link">
+    Borrado en cascada Foreground
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#borrado-en-cascada-background" class="md-nav__link">
+    Borrado en cascada Background
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#borrado-dejando-recursos-huerfanos" class="md-nav__link">
+    Borrado dejando recursos huérfanos
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  
+                
+                
+                <h1 id="controllers">Controllers</h1>
+<p>Kubernetes proporciona un conjunto de abstracciones a alto nivel, que permiten
+gestionar el despliegue y ejecución de los Pods.</p>
+<p>Estos controladores permiten mantener el estado deseado de los Pods incluso
+ante reinicios o caídas de servicio, aumentando el número de replicas hasta
+llegar al número deseado.</p>
+<h2 id="replica-set">Replica Set</h2>
+<p>Este Controller es el encargado de mantener el número deseado de replicas de los
+Pods. En su definición se encuentra la plantilla del Pod que se encargará de
+crear.</p>
+<p>Para identificar qué Pods debe gestionar, añadirá un Label en los Pods que cree
+y tendrá configurado eun Selector para seleccionarlos.</p>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>No se trabaja directamente con <strong>Replica Set</strong>. Para gestionar el despliegue
+de Pods, se utilizarán <strong>Deployments</strong> que a su vez crearán un <strong>Replica
+Set</strong>. </p>
+</div>
+<div class="admonition error">
+<p class="admonition-title">Cuidado!</p>
+<p>Las Labels que utilice el <strong>Replica Set</strong> para identificar a sus Pods, no
+pueden solaparse con Labels de otros Pods. De lo contrario, el <strong>Replica
+Set</strong> interpretará que debe gestionar esos Pods y pudiera llegar a
+eliminarlos.</p>
+</div>
+<h2 id="deployment">Deployment</h2>
+<p>Este Controller se encarga de gestionar el despliegue de Pods. Contiene el
+número de replicas y una plantilla con la configuración del Pod deseado.</p>
+<p>Para gestionar el número de replicas de un Pod, el <strong>Deployment</strong> crea un
+<strong>Replica Set</strong>. Cada vez que se modifique la definición del Pod, se creará un
+nuevo <strong>Replica Set</strong> y el anterior se actualizará para tener 0 replicas. Este
+mecanismo permite mantener <strong>Replica Set</strong> con configuraciones de Pod anteriores
+y así realizar rollbacks.</p>
+<p>Para que el <strong>Deployment</strong> identifique que <strong>Replica Set</strong> y Pod debe gestionar,
+etiqueta con una Label todos los recursos que genera (Replica Set y Pods) para
+luego filtrar con un Selector.</p>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>Los <strong>Deployments</strong> solo admiten <code>spec.template.spec.restartPolicy</code> con
+valor <code>Always</code></p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Ejemplo</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
+<span class="nt">kind</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Deployment</span>
+<span class="nt">metadata</span><span class="p">:</span>
+  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">nginx-deployment</span>
+  <span class="nt">labels</span><span class="p">:</span>
+    <span class="nt">app</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">nginx</span>
+<span class="nt">spec</span><span class="p">:</span>
+  <span class="nt">replicas</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3</span>
+  <span class="nt">selector</span><span class="p">:</span>
+    <span class="nt">matchLabels</span><span class="p">:</span>
+      <span class="nt">app</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">nginx</span>
+  <span class="nt">template</span><span class="p">:</span>
+    <span class="nt">metadata</span><span class="p">:</span>
+      <span class="nt">labels</span><span class="p">:</span>
+        <span class="nt">app</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">nginx</span>
+    <span class="nt">spec</span><span class="p">:</span>
+      <span class="nt">containers</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">nginx</span>
+        <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">nginx:1.14.2</span>
+        <span class="nt">ports</span><span class="p">:</span>
+        <span class="p p-Indicator">-</span> <span class="nt">containerPort</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">80</span>
+</code></pre></div>
+
+</div>
+<h3 id="estrategia-y-estado-del-despliegue">Estrategia y estado del despliegue</h3>
+<h4 id="estrategia-de-despliegue">Estrategia de despliegue</h4>
+<p>Cada vez que se realiza un cambio en la definición del Pod, se dispara una
+redespliegue de los Pods. Esto se hace de forma controlada en función de la
+estrategia de despliegue configurada. Esto se indica con la stanza <code>.spec.strategy.type</code>.</p>
+<p>Tipos de estrategia:</p>
+<ul>
+<li><code>Recreate</code>: todos los Pods antiguos son destruídos antes de empezar a
+  desplegar los nuevos.</li>
+<li><code>RollingUpdate</code>: (Por defecto) mediante las propiedades
+  <code>.spec.strategy.rollingUpdate.maxUnavailable</code> y
+  <code>.spec.strategy.rollingUpdate.maxSurge</code> del Deployment, controla el ritmo en
+  el que se crean los nuevos Pods y se destruyen los antiguos, levantando los
+  nuevos a un ritmo de <code>maxSurge</code> y eliminando los viejos a un ritmo que permita
+  mantener el <code>maxUnavailable</code>.</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title"><code>maxSurge</code> y <code>maxUnavailable</code></p>
+<p>Ambas propiedades son opcionales y pueden indicarse con valores absolutos
+(p.ej. 3) o con valores porcentuales (p.ej. 25%)</p>
+</div>
+<h4 id="estado-del-despliegue">Estado del despliegue</h4>
+<p>Para consultar el estado del despliegue:
+<div class="highlight"><pre><span></span><code>kubectl rollout status deployment.v1.apps/nginx-deployment
+</code></pre></div></p>
+<p>Si se desean realizar varios cambios de forma programática y no se desea
+redesplegar por cada uno de los cambios:
+<div class="highlight"><pre><span></span><code><span class="c1"># Se pausan los despliegues</span>
+kubectl rollout pause deployment.v1.apps/nginx-deployment
+
+<span class="c1"># Se aplican los cambios</span>
+kubectl <span class="nb">set</span> image deployment.v1.apps/nginx-deployment <span class="nv">nginx</span><span class="o">=</span>nginx:1.16.1
+kubectl <span class="nb">set</span> resources deployment.v1.apps/nginx-deployment -c<span class="o">=</span>nginx --limits<span class="o">=</span><span class="nv">cpu</span><span class="o">=</span>200m,memory<span class="o">=</span>512Mi
+
+<span class="c1"># Se ranudan los despliegues</span>
+kubectl rollout resume deployment.v1.apps/nginx-deployment
+</code></pre></div></p>
+<h3 id="rollback">Rollback</h3>
+<p>Para consultar los despliegues realizados previos al actual, se puede consultar
+con el siguiente comando de ejemplo (por defecto mantiene los últimos 10):
+<div class="highlight"><pre><span></span><code>kubectl rollout <span class="nb">history</span> deployment.v1.apps/nginx-deployment
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>deployments <span class="s2">&quot;nginx-deployment&quot;</span>
+REVISION    CHANGE-CAUSE
+<span class="m">1</span>           kubectl apply --filename<span class="o">=</span>https://k8s.io/examples/controllers/nginx-deployment.yaml --record<span class="o">=</span><span class="nb">true</span>
+<span class="m">2</span>           kubectl <span class="nb">set</span> image deployment.v1.apps/nginx-deployment <span class="nv">nginx</span><span class="o">=</span>nginx:1.16.1 --record<span class="o">=</span><span class="nb">true</span>
+<span class="m">3</span>           kubectl <span class="nb">set</span> image deployment.v1.apps/nginx-deployment <span class="nv">nginx</span><span class="o">=</span>nginx:1.161 --record<span class="o">=</span><span class="nb">true</span>
+</code></pre></div></p>
+<blockquote>
+<p><code>CHANGE_CAUSE</code> solo aparecerá si en el momento de realizar el despliegue se
+especificó la opción <code>--record</code></p>
+</blockquote>
+<p>Para hacer un rollback a una versión anterior:
+<div class="highlight"><pre><span></span><code>kubectl rollout undo deployment.v1.apps/nginx-deployment --to-revision<span class="o">=</span><span class="m">2</span>
+</code></pre></div></p>
+<blockquote>
+<p><code>--to-revision</code> es para redesplegar una versión específica. Si no se indica,
+se hace un rollback de la versión anterior a la actual</p>
+</blockquote>
+<h3 id="escalado">Escalado</h3>
+<p>El número de replicas de un Pod se puede modificar de forma manual o de forma
+automática.</p>
+<h4 id="manual">Manual</h4>
+<div class="highlight"><pre><span></span><code>kubectl scale deployment.v1.apps/nginx-deployment --replicas<span class="o">=</span><span class="m">10</span>
+</code></pre></div>
+
+<h4 id="automatica">Automática</h4>
+<div class="highlight"><pre><span></span><code>kubectl autoscale deployment.v1.apps/nginx-deployment --min<span class="o">=</span><span class="m">10</span> --max<span class="o">=</span><span class="m">15</span> --cpu-percent<span class="o">=</span><span class="m">80</span>
+</code></pre></div>
+
+<blockquote>
+<p>Este comando crea un <strong>Horizontal Pod Autoscaler</strong></p>
+</blockquote>
+<h2 id="statefulset">StatefulSet</h2>
+<p>Similares a los <strong>Deployment</strong>, este tipo de objeto permite crear Pods de forma
+ordenada y con entidad propia. </p>
+<p>Esto por ejemplo significa que el primer Pod que se crea siempre va a tener las
+mismas características (p.ej. aunque se recree el Pod, se utilizará el mismo
+Volume que el anterior).</p>
+<p>El nombre de cada Pod va a ser siempre el mismo y
+estará formado por <code>&lt;statefulset_name&gt;-N</code> donde <code>N</code> es un número cardinal que
+identifica la instancia del Pod (empezando desde 0).</p>
+<p>La definición de un <strong>StatefulSet</strong> es prácticamente la misma que un
+<strong>Deployment</strong>, solo que hay que añadir la propiedad <code>spec.serviceName</code> con el
+nombre del <strong>Headless Service</strong>.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Hasta que la instancia anterior no esté "Running and Ready", no se empezará a
+desplegar la siguiente instancia. </p>
+<blockquote>
+<p>Esto se puede desactivar con el campo <code>.spec.podManagementPolicy</code> que por
+defecto tiene valor <code>OrderedReady</code>. Para desactivarlo hay que indicar el valor
+<code>Parallel</code>.</p>
+</blockquote>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Para qué sirve?</p>
+<p>Los <strong>StatefulSets</strong> son útiles para las aplicaciones que:</p>
+<ul>
+<li>Requieran identificadores de red únicos y estables.</li>
+<li>Necesiten almacenamiento estable para la persistencia de datos.</li>
+<li>Requieran despliegue y escalado ordenado de las instancias.</li>
+<li>No implementen la posibilidad de ser desplegadas de forma distribuida (p.ej. base de datos SQL)</li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Limitaciones</p>
+<ul>
+<li>Eliminar o escalar a menos el <strong>StatefulSet</strong>, no elimina los Volumes
+asociados a éste. Así se garantiza la seguridad de los datos.</li>
+<li>Para poder conectarse con cada instancia particular, se debe crear un
+<strong>Headless Service</strong> además del <strong>Service</strong>.</li>
+<li>Al utilizar la estrategia de despliegue por defecto (<code>OrderedReady</code>), puede
+que el despliegue quede en un estado roto si sucede algún error. En ese caso
+hay que realizar un rollback y <strong>eliminar manualmente</strong> los nuevos Pods del
+despliegue fallido.</li>
+<li>Los <strong>Persistent Volume Claim (PVC)</strong> deben generarse de forma dinámica
+con la stanza <code>spec.volumeClaimTemplates</code>, de lo contrario, si se especifica
+un único <strong>PVC</strong>, todas las instancias montarán exactamente el mismo <strong>PVC</strong>.</li>
+</ul>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Ejemplo</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
+<span class="nt">kind</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">StatefulSet</span>
+<span class="nt">metadata</span><span class="p">:</span>
+  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">web</span>
+<span class="nt">spec</span><span class="p">:</span>
+  <span class="nt">selector</span><span class="p">:</span>
+    <span class="nt">matchLabels</span><span class="p">:</span>
+      <span class="nt">app</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">nginx</span> <span class="c1"># has to match .spec.template.metadata.labels</span>
+  <span class="nt">serviceName</span><span class="p">:</span> <span class="s">&quot;nginx&quot;</span>
+  <span class="nt">replicas</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3</span> <span class="c1"># by default is 1</span>
+  <span class="nt">template</span><span class="p">:</span>
+    <span class="nt">metadata</span><span class="p">:</span>
+      <span class="nt">labels</span><span class="p">:</span>
+        <span class="nt">app</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">nginx</span> <span class="c1"># has to match .spec.selector.matchLabels</span>
+    <span class="nt">spec</span><span class="p">:</span>
+      <span class="nt">terminationGracePeriodSeconds</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">10</span>
+      <span class="nt">containers</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">nginx</span>
+        <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">k8s.gcr.io/nginx-slim:0.8</span>
+        <span class="nt">ports</span><span class="p">:</span>
+        <span class="p p-Indicator">-</span> <span class="nt">containerPort</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">80</span>
+          <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">web</span>
+        <span class="nt">volumeMounts</span><span class="p">:</span>
+        <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">www</span>
+          <span class="nt">mountPath</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/usr/share/nginx/html</span>
+  <span class="nt">volumeClaimTemplates</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">metadata</span><span class="p">:</span>
+      <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">www</span>
+    <span class="nt">spec</span><span class="p">:</span>
+      <span class="nt">accessModes</span><span class="p">:</span> <span class="p p-Indicator">[</span> <span class="s">&quot;ReadWriteOnce&quot;</span> <span class="p p-Indicator">]</span>
+      <span class="nt">storageClassName</span><span class="p">:</span> <span class="s">&quot;my-storage-class&quot;</span>
+      <span class="nt">resources</span><span class="p">:</span>
+        <span class="nt">requests</span><span class="p">:</span>
+          <span class="nt">storage</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1Gi</span>
+</code></pre></div>
+
+<p>Adicionalmente debe crearse el <strong>Headless Service</strong>:
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Service</span>
+<span class="nt">metadata</span><span class="p">:</span>
+  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">nginx</span>
+  <span class="nt">labels</span><span class="p">:</span>
+    <span class="nt">app</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">nginx</span>
+<span class="nt">spec</span><span class="p">:</span>
+  <span class="nt">ports</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">80</span>
+    <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">web</span>
+  <span class="nt">clusterIP</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">None</span> <span class="c1"># Headless</span>
+  <span class="nt">selector</span><span class="p">:</span>
+    <span class="nt">app</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">nginx</span>
+</code></pre></div></p>
+</div>
+<h3 id="estrategia-de-despliegue_1">Estrategia de despliegue</h3>
+<p>Al igual que en los <strong>Deployments</strong>, se puede configurar la forma en los que los
+<strong>StatefulSet</strong> realizarán sus despliegues. En este caso mediante la stanza
+<code>.spec.updateStrategy.type</code></p>
+<p>Los tipos de estrategia son:</p>
+<ul>
+<li><code>OnDelete</code>: Esta estrategia desactiva la actualización automática de los Pods.
+  Para actualizarlos, hay que eliminar los Pods manualmente uno a uno, una vez se ha
+  actualizado su definición en el <strong>StatefulSet</strong>.</li>
+<li>
+<p><code>RollingUpdate</code>: (Por defecto) Actualizará automáticamente los Pods, empezando
+  por el que tenga el índice más alto, hasta al más bajo.</p>
+<div class="admonition info">
+<p>Con esta estrategia se puede limitar cuántos Pods son actualizados (p.ej. para
+hacer un Canary Deployment). Para ello se utiliza la stanza
+<code>.spec.updateStrategy.rollingUpdate.partition</code>. Esta stanza tiene valor
+numérico e indica a partir de qué instancia deben realizarse las
+actualizaciones. De esta forma las instancias que queden por debajo de ese
+valor no serán actualizadas (incluso si se recrean esos Pods).</p>
+</div>
+</li>
+</ul>
+<h2 id="daemonset">DaemonSet</h2>
+<p>Este Controller es similar a los <strong>Deployments</strong>, pero su objetivo es intentar
+desplegar una copia del Pod en cada uno de los nodos del cluster. Si se elimina
+el <strong>DaemonSet</strong>, se eliminarán todos los Pods que haya desplegado en los nodos.</p>
+<div class="admonition info">
+<p class="admonition-title">Para qué se suele utilizar?</p>
+<ul>
+<li>Desplegar un collector de logs en cada nodo</li>
+<li>Desplegar un collector de métricas para monitorizar cada uno de los nodos</li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Se puede limitar sobre qué nodos se desea desplegar mediante las
+propiedades <code>.spec.template.spec.nodeSelector</code> o
+<code>.spec.template.spec.affinity</code></p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>La stanza <code>.spec.template.spec.restartPolicy</code> solo admite valor <code>Always</code></p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Ejemplo</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
+<span class="nt">kind</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">DaemonSet</span>
+<span class="nt">metadata</span><span class="p">:</span>
+  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">fluentd-elasticsearch</span>
+  <span class="nt">namespace</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">kube-system</span>
+  <span class="nt">labels</span><span class="p">:</span>
+    <span class="nt">k8s-app</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">fluentd-logging</span>
+<span class="nt">spec</span><span class="p">:</span>
+  <span class="nt">selector</span><span class="p">:</span>
+    <span class="nt">matchLabels</span><span class="p">:</span>
+      <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">fluentd-elasticsearch</span>
+  <span class="nt">template</span><span class="p">:</span>
+    <span class="nt">metadata</span><span class="p">:</span>
+      <span class="nt">labels</span><span class="p">:</span>
+        <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">fluentd-elasticsearch</span>
+    <span class="nt">spec</span><span class="p">:</span>
+      <span class="nt">tolerations</span><span class="p">:</span>
+      <span class="c1"># this toleration is to have the daemonset runnable on master nodes</span>
+      <span class="c1"># remove it if your masters can&#39;t run pods</span>
+      <span class="p p-Indicator">-</span> <span class="nt">key</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">node-role.kubernetes.io/master</span>
+        <span class="nt">effect</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">NoSchedule</span>
+      <span class="nt">containers</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">fluentd-elasticsearch</span>
+        <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">quay.io/fluentd_elasticsearch/fluentd:v2.5.2</span>
+        <span class="nt">resources</span><span class="p">:</span>
+          <span class="nt">limits</span><span class="p">:</span>
+            <span class="nt">memory</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">200Mi</span>
+          <span class="nt">requests</span><span class="p">:</span>
+            <span class="nt">cpu</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">100m</span>
+            <span class="nt">memory</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">200Mi</span>
+        <span class="nt">volumeMounts</span><span class="p">:</span>
+        <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">varlog</span>
+          <span class="nt">mountPath</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/var/log</span>
+        <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">varlibdockercontainers</span>
+          <span class="nt">mountPath</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/var/lib/docker/containers</span>
+          <span class="nt">readOnly</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+      <span class="nt">terminationGracePeriodSeconds</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">30</span>
+      <span class="nt">volumes</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">varlog</span>
+        <span class="nt">hostPath</span><span class="p">:</span>
+          <span class="nt">path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/var/log</span>
+      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">varlibdockercontainers</span>
+        <span class="nt">hostPath</span><span class="p">:</span>
+          <span class="nt">path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/var/lib/docker/containers</span>
+</code></pre></div>
+
+</div>
+<h3 id="estrategia-de-despliegue_2">Estrategia de despliegue</h3>
+<p>Al igual que los <strong>StatefulSets</strong> admite dos estrategias de despliegue:
+<code>OnDelete</code> y <code>RollingUpdate</code>.</p>
+<h2 id="job">Job</h2>
+<p>En ocasiones es necesario realizar una operación finita dentro del cluster. Esto
+quiere decir, que se debe levantarse un Pod para realizar una operación y cuando
+termine, éste deberá detenerse.</p>
+<p>Si el proceso del Pod debe ejecutarse varias veces (p.ej. procesar mensajes de
+una cola), se puede configurar la stanza <code>spec.completions</code> para indicar el
+número de veces que debe de ejecutarse correctamente el Pod para dar por
+finalizado el <strong>Job</strong> (con cada ejecución se crea un Pod nuevo).</p>
+<p>Si se especifica un <code>spec.completions</code> mayor a 1, se pueden paralelizar las
+ejecuciones con el campo <code>spec.parallelism</code> con el número de Pods que se admiten
+ejecutar en paralelo.</p>
+<div class="admonition info">
+<p class="admonition-title">Para qué sirve?</p>
+<p>Una <strong>Job</strong> es útil para ejecutar procesos Batch.</p>
+<p>Existen varias formas de utilizar un <strong>Job</strong>:</p>
+<ul>
+<li>
+<p><strong>Jobs sin paralelismo:</strong> Solo levanta un Pod (a no ser que falle y el Pod se
+  reinicie hasta completar satisfactóriamente). El <strong>Job</strong> se da por completado
+  cuando el Pod termina satisfactóriamente.</p>
+<div class="admonition example">
+<p><strong>Ejemplo:</strong> Proceso de backup</p>
+</div>
+</li>
+<li>
+<p><strong>Jobs con paralelismo y un <em>número fijo de completados</em>:</strong> Se van levantando Pods,
+  hasta que se completen satisfactóriamente tantos Pods como 
+  <code>.spec.completions</code>. Se pueden levantar varios Pods a la vez, si se
+  indica en <code>.spec.parallelism</code>. El número máximo de Pods que pueden ejecutarse
+  a la vez, es el valor más bajo entre <code>.spec.parallelism</code> y el valor que reste
+  para llegar a <code>.spec.completions</code>.</p>
+<div class="admonition example">
+<p><strong>Ejemplo:</strong> Procesar número finito de elementos de una cola</p>
+</div>
+</li>
+<li>
+<p><strong>Jobs con paralelismo y una <em>cola de trabajo</em>:</strong> Se levantan tantos Pods como
+  <code>.spec.parallelism</code>. Cada Pod se encargará de ir obteniendo elementos de una cola de
+  trabajo y cuando ésta se quede vacía, el Pod terminará satisfactóriamente.
+  Una vez todos los Pods se han completado correctamente, el <strong>Job</strong> se dá por
+  completado.</p>
+<div class="admonition example">
+<p><strong>Ejemplo:</strong> Procesar todos los elementos de una cola</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Notas</p>
+<ul>
+<li>Sólo admite <code>.spec.restartPolicy</code> con valor <code>Never</code> o <code>OnFailure</code> (de lo
+contrario las ejecuciones no serían finitas)</li>
+<li>Por defecto <code>.spec.completions</code> y <code>.spec.parallelism</code> tienen valor 1</li>
+<li>Si no se especifica la stanza <code>.spec.completions</code>, se toma el valor que
+haya definido para <code>.spec.parallelism</code></li>
+<li>Con <code>spec.backoffLimit</code> se indica el número de reintentos que tiene una
+<strong>Job</strong> antes de darse por fallida</li>
+<li>Si se desea indicar el tiempo máximo que debe estar en ejecución una
+<strong>Job</strong> (sin tener en cuenta los Pods), se puede indicar con
+<code>.spec.activeDeadlineSeconds</code>. Pasado ese tiempo la <strong>Job</strong> terminará como
+"fallada" junto a sus Pods, sin importar qué se estuviera ejecutando.</li>
+<li>Por defecto las <strong>Jobs</strong> completadas (<code>Completed</code> o <code>Failed</code>) y sus Pods,
+se mantienen en el sistema para poder revisar sus logs y eventos. Para
+limpiar automáticamente estas Jobs se puede indicar cuánto tiempo pueden
+vivir las <strong>Jobs</strong> completadas con la stanza <code>.spec.ttlSecondsAfterFinished</code></li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>El campo <code>restartPolicy</code> únicamente aplica para los Pod, por lo que si la
+<strong>Job</strong> termina debido a que se ha excedido <code>spec.backoffLimit</code> o
+<code>.spec.activeDeadlineSeconds</code>, no habrá ningún reintento más</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Ejemplo</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">batch/v1</span>
+<span class="nt">kind</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Job</span>
+<span class="nt">metadata</span><span class="p">:</span>
+  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">job-wq-1</span>
+<span class="nt">spec</span><span class="p">:</span>
+  <span class="nt">completions</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">8</span>
+  <span class="nt">parallelism</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2</span>
+  <span class="nt">template</span><span class="p">:</span>
+    <span class="nt">metadata</span><span class="p">:</span>
+      <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">job-wq-1</span>
+    <span class="nt">spec</span><span class="p">:</span>
+      <span class="nt">containers</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">c</span>
+        <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">gcr.io/&lt;project&gt;/job-wq-1</span>
+        <span class="nt">env</span><span class="p">:</span>
+        <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">BROKER_URL</span>
+          <span class="nt">value</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">amqp://guest:guest@rabbitmq-service:5672</span>
+        <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">QUEUE</span>
+          <span class="nt">value</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">job1</span>
+      <span class="nt">restartPolicy</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">OnFailure</span>
+</code></pre></div>
+
+</div>
+<h2 id="cronjob">CronJob</h2>
+<p>Las <strong>CronJob</strong> permiten ejecutar <strong>Jobs</strong> de forma periódica. La periodicidad se
+indica en sintaxis Cron (&lt;<em>minuto</em>&gt; &lt;<em>hora</em>&gt; &lt;<em>día del mes</em>&gt; &lt;<em>mes</em>&gt; &lt;<em>día de la
+semana</em>&gt;) con la stanza <code>.spec.schedule</code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>Las <strong>CronJob</strong> no aseguran el número de veces que puede ejecutarse una
+<strong>Job</strong>, por lo que sus procesos deberán ser idempotentes</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Notas</p>
+<ul>
+<li>Un <strong>CronJob</strong> se considera fallido y detiene su ejecución, cuando se ha
+llegado a omitir más de 100 la ejecución de la <strong>Job</strong>, desde la última
+ejecución correcta. A cada horario de ejecución, se le puede dar un margen
+para que el <strong>CronJob</strong> reintente la ejecución del <strong>Job</strong>, con la stanza
+<code>.spec.startingDeadlineSeconds</code>. Si esta stanza se utiliza, el contador de
+reintentos de 100 pasa a contar las omisiones desde <code>ahora - startingDeadlineSeconds</code>.</li>
+<li>Se puede configurar la concurrencia que admiten las <strong>Cronjob</strong>, mediante la
+stanza `.spec.concurrencyPolicy:<ul>
+<li><code>Allow</code>: (Por defecto) Permite que un mismo <strong>CronJob</strong> pueda tener varias
+<strong>Jobs</strong> ejecutándose a la vez.</li>
+<li><code>Forbid</code>: No se permiten ejecuciones simultáneas de <strong>Jobs</strong>. Si llega la
+hora de ejecutarse una nueva <strong>Job</strong> y la anterior aún esta ejecutándose, se
+omite la nueva.</li>
+<li><code>Replace</code>: Si llega la hora de ejecutarse una nueva <strong>Job</strong> y la anterior 
+  aún esta ejecutándose, se ejecuta la nueva <strong>Job</strong> reemplazando la antigua.</li>
+</ul>
+</li>
+<li>Para limpiar automáticamente las <strong>Jobs</strong> completadas, se puede indicar
+cuántas <strong>Jobs</strong> completadas se desea retener, usando los campos
+<code>.spec.successfulJobsHistoryLimit</code> (para <strong>Jobs</strong> completadas correctamente)
+y <code>.spec.failedJobsHistoryLimit</code> (para <strong>Jobs</strong> que hayan fallado). Por
+defecto, esos campos tienen valor <code>3</code> y <code>1</code>.</li>
+</ul>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Ejemplo</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">batch/v1beta1</span>
+<span class="nt">kind</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">CronJob</span>
+<span class="nt">metadata</span><span class="p">:</span>
+  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">hello</span>
+<span class="nt">spec</span><span class="p">:</span>
+  <span class="nt">schedule</span><span class="p">:</span> <span class="s">&quot;*/1</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*&quot;</span>
+  <span class="nt">jobTemplate</span><span class="p">:</span>
+    <span class="nt">spec</span><span class="p">:</span>
+      <span class="nt">template</span><span class="p">:</span>
+        <span class="nt">spec</span><span class="p">:</span>
+          <span class="nt">containers</span><span class="p">:</span>
+          <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">hello</span>
+            <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">busybox</span>
+            <span class="nt">args</span><span class="p">:</span>
+            <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">/bin/sh</span>
+            <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">-c</span>
+            <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">date; echo Hello from the Kubernetes cluster</span>
+          <span class="nt">restartPolicy</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">OnFailure</span>
+</code></pre></div>
+
+</div>
+<h2 id="garbage-collector">Garbage Collector</h2>
+<p>Todos los recursos generados por un <strong>Deployment</strong>, <strong>ReplicaSet</strong>, <strong>Job</strong>,
+etc. llevan incrustado la stanza <code>.metadata.ownerReferences</code> que contiene
+información sobre a qué otro recurso pertenece (el recurso que lo haya generado).</p>
+<p>De esta manera, si se elimina el recurso "padre", los recursos que cuelgan de
+él, se eliminarán en cascada.</p>
+<p>Si por ejemplo solo se desea destruir el recurso "padre" y dejar el resto de
+objetos "huérfanos" se puede indicar con <code>kubectl</code> de la siguiente manera:
+<div class="highlight"><pre><span></span><code>kubectl delete replicaset my-repset --cascade<span class="o">=</span><span class="nb">false</span>
+</code></pre></div></p>
+<h3 id="api">API</h3>
+<p>Si en vez de utilizar <code>kubectl</code> se desea eliminar un recurso con la API de
+Kubernetes, existen 3 formas.</p>
+<h4 id="borrado-en-cascada-foreground">Borrado en cascada Foreground</h4>
+<p>Cuando el <strong>kube-apiserver</strong> recibe la petición de borrado, empieza eliminando
+todos los recursos "hijo" que tengan la propiedad
+<code>.metadata.ownerReference.blockOwnerDeletion=true</code>. Una vez están todos
+eliminados, procede con el recurso "padre".
+<div class="highlight"><pre><span></span><code>kubectl proxy --port<span class="o">=</span><span class="m">8080</span>
+curl -X DELETE localhost:8080/apis/apps/v1/namespaces/default/replicasets/my-repset <span class="se">\</span>
+  -d <span class="s1">&#39;{&quot;kind&quot;:&quot;DeleteOptions&quot;,&quot;apiVersion&quot;:&quot;v1&quot;,&quot;propagationPolicy&quot;:&quot;Foreground&quot;}&#39;</span> <span class="se">\</span>
+  -H <span class="s2">&quot;Content-Type: application/json&quot;</span>
+</code></pre></div></p>
+<h4 id="borrado-en-cascada-background">Borrado en cascada Background</h4>
+<p>Cuando el <strong>kube-apiserver</strong> recibe la petición de borrado, elimina directamente
+el recurso "padre" y a continuación sus recursos "hijo".
+<div class="highlight"><pre><span></span><code>kubectl proxy --port<span class="o">=</span><span class="m">8080</span>
+curl -X DELETE localhost:8080/apis/apps/v1/namespaces/default/replicasets/my-repset <span class="se">\</span>
+  -d <span class="s1">&#39;{&quot;kind&quot;:&quot;DeleteOptions&quot;,&quot;apiVersion&quot;:&quot;v1&quot;,&quot;propagationPolicy&quot;:&quot;Background&quot;}&#39;</span> <span class="se">\</span>
+  -H <span class="s2">&quot;Content-Type: application/json&quot;</span>
+</code></pre></div></p>
+<h4 id="borrado-dejando-recursos-huerfanos">Borrado dejando recursos huérfanos</h4>
+<p>Sólo se elimina el recurso "padre" y los recursos "hijo" se quedan huérfanos.
+<div class="highlight"><pre><span></span><code>kubectl proxy --port<span class="o">=</span><span class="m">8080</span>
+curl -X DELETE localhost:8080/apis/apps/v1/namespaces/default/replicasets/my-repset <span class="se">\</span>
+  -d <span class="s1">&#39;{&quot;kind&quot;:&quot;DeleteOptions&quot;,&quot;apiVersion&quot;:&quot;v1&quot;,&quot;propagationPolicy&quot;:&quot;Orphan&quot;}&#39;</span> <span class="se">\</span>
+  -H <span class="s2">&quot;Content-Type: application/json&quot;</span>
+</code></pre></div></p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../pods/" title="Pods" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Pods
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../../network/service/" title="Service" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Service
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.d710d30a.min.js"></script>
+      <script src="../../assets/javascripts/bundle.b39636ac.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.a68abb33.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>
