@@ -1196,25 +1196,66 @@ Cloud. Si esta capa no es segura, el resto van a ser vulnerables a ataques.</p>
 <h4 id="securizar-componentes-del-cluster">Securizar componentes del cluster</h4>
 <div class="admonition info">
 <p class="admonition-title">Recomendaciones</p>
-<p><em>API de Kubernetes</em>
-  | <strong>Recomendaciones</strong> |
-  | ------------------ |
-  | Realizar todas las conexiones a la API de Kubernetes a través de HTTPS |
-  | Habilitar un mecanismo de autenticación para hacer uso de la API |
-  | Habilitar un mecanismo de autorización para configurar qué endpoints de la API se pueden utilizar |</p>
-<p><em>Kubelet</em>
-  | <strong>Recomendaciones</strong> |
-  | ------------------ |
-  | Por defecto el <strong>kubelet</strong> permite realizar llamadas a la API sin necesidad de autenticarse. Habría que habilitar un mecanismo de autenticación y autorización para poder hacer uso de la API del <strong>kubelet</strong> |</p>
-<p><em>Capabilities en tiempo de ejecución</em>
-  | <strong>Recomendaciones</strong> |
-  | ------------------ |
-  | Limitar el uso de recursos del cluster mediante <strong>Resource Quota</strong> y <strong>Limit Ranges</strong> |
-  | Controlar mediante <strong>Security Context</strong> o <strong>Security Policies</strong>, los privilegios con los que se ejecutan los contenedores |
-  | Evitar que el kernel cargue módulos innecesarios que puedan suponer una vulnerabilidad. Esto se puede evitar por ejemplo con SELinux |
-  | Restringir el acceso a red mediante <strong>Network Policies</strong> |
-  | Limitar el acceso a la API de de metadatos del Cloud, para que solo ciertos Pods tengan acceso a los datos sensibles |
-  | Controlar a qué nodos tienen acceso los Pods (en qué nodos pueden desplegarse), mediante el uso de <em>taints</em> o <em>nodeSelectors</em>. |</p>
+<p><strong><em>API de Kubernetes</em></strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>Recomendaciones</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Realizar todas las conexiones a la API de Kubernetes a través de HTTPS</td>
+</tr>
+<tr>
+<td>Habilitar un mecanismo de autenticación para hacer uso de la API</td>
+</tr>
+<tr>
+<td>Habilitar un mecanismo de autorización para configurar qué endpoints de la API se pueden utilizar</td>
+</tr>
+</tbody>
+</table>
+<p><strong><em>Kubelet</em></strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>Recomendaciones</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Por defecto el <strong>kubelet</strong> permite realizar llamadas a la API sin necesidad de autenticarse. Habría que habilitar un mecanismo de autenticación y autorización para poder hacer uso de la API del <strong>kubelet</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong><em>Capabilities en tiempo de ejecución</em></strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>Recomendaciones</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Limitar el uso de recursos del cluster mediante <strong>Resource Quota</strong> y <strong>Limit Ranges</strong></td>
+</tr>
+<tr>
+<td>Controlar mediante <strong>Security Context</strong> o <strong>Security Policies</strong>, los privilegios con los que se ejecutan los contenedores</td>
+</tr>
+<tr>
+<td>Evitar que el kernel cargue módulos innecesarios que puedan suponer una vulnerabilidad. Esto se puede evitar por ejemplo con SELinux</td>
+</tr>
+<tr>
+<td>Restringir el acceso a red mediante <strong>Network Policies</strong></td>
+</tr>
+<tr>
+<td>Limitar el acceso a la API de de metadatos del Cloud, para que solo ciertos Pods tengan acceso a los datos sensibles</td>
+</tr>
+<tr>
+<td>Controlar a qué nodos tienen acceso los Pods (en qué nodos pueden desplegarse), mediante el uso de <em>taints</em> o <em>nodeSelectors</em>.</td>
+</tr>
+</tbody>
+</table>
 </div>
 <h4 id="securizar-componentes-de-las-aplicaciones">Securizar componentes de las aplicaciones</h4>
 <div class="admonition info">
